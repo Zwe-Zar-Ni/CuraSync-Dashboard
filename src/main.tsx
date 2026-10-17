@@ -12,21 +12,24 @@ import queryClient from "./common/api/queryClient";
 
 import { Toaster, toastOptions } from "@/shared/components/ui/sonner";
 import { TooltipProvider } from "./shared/components/ui/tooltip";
+import { ThemeProvider } from "./shared/components/theme-provider";
 
 const language = getLanguage();
 i18n.changeLanguage(language);
 
 createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={queryClient}>
-    <Toaster
-      expand={true}
-      visibleToasts={3}
-      position="bottom-center"
-      toastOptions={toastOptions}
-      duration={5000}
-    />
-    <TooltipProvider>
-      <RouterProvider router={router} />
-    </TooltipProvider>
+    <ThemeProvider defaultTheme="dark" storageKey="cura-ui-theme">
+      <Toaster
+        expand={true}
+        visibleToasts={3}
+        position="bottom-center"
+        toastOptions={toastOptions}
+        duration={5000}
+      />
+      <TooltipProvider>
+        <RouterProvider router={router} />
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );

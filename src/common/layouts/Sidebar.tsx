@@ -34,7 +34,7 @@ const Sidebar = () => {
   return (
     <SidebarPrimitive>
       <SidebarHeader className="flex items-center  flex-row gap-2">
-        <img src="/favicon.svg" alt="Logo" className="w-15 h-15" />
+        <img src="/favicon.svg" alt="Logo" className="w-12 h-12" />
         <div>
           <h2 className="text-text-primary text-lg font-semibold">Cura Sync</h2>
           <h3 className="text-text-secondary text-sm">Admin Dashboard</h3>
@@ -57,17 +57,17 @@ const Sidebar = () => {
                   >
                     <item.icon
                       size={24}
-                      color={pathname === item.link ? "#00A848" : "#848484"}
+                      color={pathname === item.link ? "#c70036" : "#848484"}
                       strokeWidth={2}
                     />
                     <p className="flex flex-col">
                       <span
-                        className={`${pathname === item.link ? "text-[#00A848]" : "text-text-primary/80"} text-sm`}
+                        className={`${pathname === item.link ? "text-primary" : "text-text-primary/80"} text-sm`}
                       >
                         {item.name}
                       </span>
                       <span
-                        className={`${pathname === item.link ? "text-[#00A848]" : "text-text-secondary"} text-xs`}
+                        className={`${pathname === item.link ? "text-primary" : "text-text-secondary"} text-xs`}
                       >
                         {item.name_mm}
                       </span>

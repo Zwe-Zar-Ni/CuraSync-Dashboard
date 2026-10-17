@@ -2,12 +2,13 @@ import { Button } from "@/shared/components/ui/button";
 
 import { useNavigate } from "react-router";
 import { SidebarTrigger } from "@/shared/components/ui/sidebar";
+import { ThemeToggle } from "@/shared/components/ui/theme-toggle";
 
 const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="rounded-b-xl bg-white py-1 px-2 md:px-6 flex justify-between items-center">
+    <nav className="rounded-b-xl bg-white dark:bg-background py-1 px-2 md:px-6 flex justify-between items-center">
       <SidebarTrigger className="-ml-1" />
       <div className="flex gap-5 items-center h-full">
         <Button
@@ -24,6 +25,7 @@ const Navbar = () => {
             </span>
           </div>
         </Button>
+        <ThemeToggle />
       </div>
     </nav>
   );
