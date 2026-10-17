@@ -8,6 +8,10 @@ const router = createBrowserRouter([
     Component: App
   },
   {
+    path: "/login",
+    Component: lazy(() => import("@/domain/auth/pages/LoginPage"))
+  },
+  {
     path: "/dashboard",
     Component: lazy(() => import("@/common/layouts/AdminDashboard")),
     errorElement: <p className="text-center py-24">Error. Not Found.</p>,

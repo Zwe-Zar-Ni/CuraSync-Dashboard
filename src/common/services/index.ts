@@ -4,7 +4,7 @@ import type { UserProfile } from "../types";
 class CommonSerivce {
   async getUserProfile() {
     const response = await httpClient.get("/me");
-    return response.data as { user: UserProfile };
+    return response.data as UserProfile;
   }
   async logout() {
     const response = await httpClient.post("/logout");

@@ -8,18 +8,23 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import "@/common/libs/i18n";
 import { getLanguage } from "@/common/libs/i18n/utils";
 import i18n from "@/common/libs/i18n";
-import queryClient from "./common/api/queryClient";
+import queryClient from "@/common/api/queryClient";
 
 import { Toaster, toastOptions } from "@/shared/components/ui/sonner";
-import { TooltipProvider } from "./shared/components/ui/tooltip";
-import { ThemeProvider } from "./shared/components/theme-provider";
+import { TooltipProvider } from "@/shared/components/ui/tooltip";
+import { ThemeProvider, type Theme } from "@/shared/components/theme-provider";
 
 const language = getLanguage();
 i18n.changeLanguage(language);
 
+const initialTheme = localStorage.getItem("cura-ui-theme") ?? "dark";
+
 createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="dark" storageKey="cura-ui-theme">
+    <ThemeProvider
+      defaultTheme={initialTheme as Theme}
+      storageKey="cura-ui-theme"
+    >
       <Toaster
         expand={true}
         visibleToasts={3}

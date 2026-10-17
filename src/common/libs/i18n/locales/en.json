@@ -1,3 +1,13 @@
 {
-  "welcome": "Welcome"
+  "welcome": "Welcome",
+  "auth": {
+    "welcomeBack": "Welcome Back!"
+  },
+  "labels": {
+    "email": "Email",
+    "password": "Password"
+  },
+  "actions": {
+    "login": "Login"
+  }
 }

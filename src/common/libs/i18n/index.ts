@@ -1,29 +1,29 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
 
-import en from './locales/en.json';
-import mm from './locales/mm.json';
+import en from "./locales/en.json";
+import mm from "./locales/mm.json";
 
 export const languages = [
-  { value: 'en', label: 'English' },
-  { value: 'mm', label: 'မြန်မာ' },
+  { value: "en", label: "English" },
+  { value: "mm", label: "မြန်မာ" }
 ] as const;
 
 const resources = {
   en: { translation: en },
-  mm: { translation: mm },
+  mm: { translation: mm }
 };
 
 i18n.use(initReactI18next).init({
   resources,
-  fallbackLng: 'en',
+  fallbackLng: "en",
   interpolation: {
-    escapeValue: false,
+    escapeValue: false
   },
   detection: {
-    order: ['localStorage', 'navigator'],
-    caches: ['localStorage'],
-  },
+    order: ["localStorage", "navigator"],
+    caches: ["localStorage"]
+  }
 });
 
 export default i18n;

@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next";
 import { SidebarNavigation } from "../config/navigation";
 import { NavLink, useLocation } from "react-router";
 import { removeToken } from "../utils/auth";
@@ -19,7 +18,6 @@ import {
 import { LogOut } from "lucide-react";
 
 const Sidebar = () => {
-  const { t } = useTranslation();
   const { pathname } = useLocation();
   const { setOpenMobile } = useSidebar();
 
@@ -34,7 +32,7 @@ const Sidebar = () => {
   return (
     <SidebarPrimitive>
       <SidebarHeader className="flex items-center  flex-row gap-2">
-        <img src="/favicon.svg" alt="Logo" className="w-12 h-12" />
+        <img src="/icon.png" alt="Logo" className="w-12 h-12 rounded-xl" />
         <div>
           <h2 className="text-text-primary text-lg font-semibold">Cura Sync</h2>
           <h3 className="text-text-secondary text-sm">Admin Dashboard</h3>

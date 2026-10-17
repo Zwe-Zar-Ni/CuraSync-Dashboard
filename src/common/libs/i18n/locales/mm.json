@@ -1,3 +1,13 @@
 {
-  "welcome": "မင်္ဂလာပါ"
+  "welcome": "မင်္ဂလာပါ",
+  "auth": {
+    "welcomeBack": "ပြန်လည်ကြိုဆိုပါသည်"
+  },
+  "labels": {
+    "email": "အီးမေးလ်",
+    "password": "စကားဝှက်"
+  },
+  "actions": {
+    "login": "Login"
+  }
 }

@@ -20,11 +20,17 @@ export type ApiError = {
     };
   };
 };
-export interface UserProfile {
+
+export type User = {
   id: number;
   name: string;
   email: string;
+  phone_number: string | null;
   profile_url: string | null;
-  created_at: string;
-  updated_at: string;
-}
+};
+
+export type UserProfile = {
+  user: User;
+  role: "admin";
+  profile: null;
+};
