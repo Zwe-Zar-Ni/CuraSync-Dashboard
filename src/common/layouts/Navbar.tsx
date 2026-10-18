@@ -8,7 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="rounded-b-xl bg-white dark:bg-background py-1 px-2 md:px-6 flex justify-between items-center">
+    <nav className="rounded-b-xl bg-sidebar border py-1 px-2 md:px-6 flex justify-between items-center">
       <SidebarTrigger className="-ml-1" />
       <div className="flex gap-5 items-center h-full">
         <Button

@@ -1,25 +1,25 @@
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-// import { useGetUserProfile } from "../queries";
 import { SidebarProvider, SidebarInset } from "@/shared/components/ui/sidebar";
+import useAuth from "../hooks/useAuth";
 
 const AdminDashboard = () => {
-  // const { data, isPending } = useGetUserProfile();
-  // const navigate = useNavigate();
+  const { isLoading, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
-  // if (isPending) {
-  //   return (
-  //     <div className="w-screen h-screen flex justify-center items-center">
-  //       <img src="/logo.png" alt="Logo" className="w-20" />
-  //     </div>
-  //   );
-  // }
-  // if (!data?.user || !data.user.id) {
-  //   navigate("/login", {
-  //     replace: true
-  //   });
-  // }
+  if (isLoading) {
+    return (
+      <div className="w-screen h-screen flex justify-center items-center">
+        <img src="/logo.png" alt="Logo" className="w-20" />
+      </div>
+    );
+  }
+  if (!isAuthenticated) {
+    navigate("/login", {
+      replace: true
+    });
+  }
 
   return (
     <SidebarProvider>

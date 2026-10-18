@@ -1,5 +1,3 @@
-import type { UserProfile } from "../types";
-
 const TOKEN_KEY = "accessToken";
 
 export const setToken = (token: string) => {

@@ -1,6 +1,10 @@
-import { UserProfile } from "@/common/types";
+import type { User } from "@/common/types";
 
 export type AuthResponse = {
   token: string;
-  user: UserProfile;
+  data: {
+    user: User;
+    role: string;
+    profile: null;
+  };
 };

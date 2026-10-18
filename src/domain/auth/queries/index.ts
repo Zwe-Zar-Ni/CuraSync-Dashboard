@@ -2,7 +2,7 @@ import type { ApiError } from "@/common/types";
 import { useMutation } from "@tanstack/react-query";
 import authService from "../services";
 import type { AuthResponse } from "../types";
-import type { LoginSchema } from "../validations/login";
+import type { LoginSchema } from "../validations";
 
 export const useLogin = () =>
   useMutation<AuthResponse, ApiError, LoginSchema>({
