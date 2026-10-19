@@ -70,3 +70,11 @@ export type PatientProfile = {
   role: "patient";
   profile: Patient;
 };
+
+export type Specialization = {
+  id: number;
+  name: string;
+  description: string | null;
+  icon_url: string | null;
+  doctors_count: number;
+};

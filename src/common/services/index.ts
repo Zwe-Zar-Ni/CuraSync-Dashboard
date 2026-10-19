@@ -1,5 +1,5 @@
 import { httpClient } from "@/common/api/apiClient";
-import type { UserProfile } from "../types";
+import type { Specialization, UserProfile } from "../types";
 
 class CommonSerivce {
   async getUserProfile() {
@@ -8,6 +8,12 @@ class CommonSerivce {
   }
   async logout() {
     const response = await httpClient.post("/logout");
+    return response.data;
+  }
+  async getSpecializations() {
+    const response = await httpClient.get<Specialization[]>(
+      "/public/specializations"
+    );
     return response.data;
   }
 }

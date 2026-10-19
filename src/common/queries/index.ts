@@ -17,3 +17,9 @@ export const useLogout = () =>
       queryClient.invalidateQueries({ queryKey: ["user-me"] });
     }
   });
+
+export const useGetSpecializations = () =>
+  useQuery({
+    queryKey: ["public-specializations"],
+    queryFn: () => commonSerivce.getSpecializations()
+  });

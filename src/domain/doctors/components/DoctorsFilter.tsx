@@ -18,6 +18,7 @@ import {
 import { Controller, useForm, type Resolver } from "react-hook-form";
 import { Field } from "@/shared/components/ui/field";
 import { DOCTOR_STATUSES } from "@/common/constants/doctor";
+import { useGetSpecializations } from "@/common/queries";
 
 type UsersFilterProps = {
   values: DoctorsFilterInputType;
@@ -33,6 +34,8 @@ const UsersFilter = ({
   const resolver = zodResolver(
     DoctorsFilterValidator
   ) as Resolver<DoctorsFilterInputType>;
+
+  const { data: specializations } = useGetSpecializations();
 
   const form = useForm<DoctorsFilterInputType>({
     resolver,
@@ -117,6 +120,38 @@ const UsersFilter = ({
           </Field>
         )}
       />
+
+      <Controller
+        name="specialization_id"
+        control={form.control}
+        render={({ field }) => (
+          <Field className={selectClass}>
+            <MultiSelect
+              values={field.value ? [field.value.toString()] : []}
+              onValuesChange={(values) => field.onChange(Number(values[0]))}
+              single={true}
+            >
+              <MultiSelectTrigger className={selectClass}>
+                <MultiSelectValue placeholder="Specialization" />
+              </MultiSelectTrigger>
+              <MultiSelectContent search={true}>
+                <MultiSelectGroup>
+                  <MultiSelectItem value={"0"}>All</MultiSelectItem>
+                  {specializations?.map((specialization) => (
+                    <MultiSelectItem
+                      key={specialization.id}
+                      value={specialization.id.toString()}
+                    >
+                      {specialization.name}
+                    </MultiSelectItem>
+                  ))}
+                </MultiSelectGroup>
+              </MultiSelectContent>
+            </MultiSelect>
+          </Field>
+        )}
+      />
+
       <div className="flex gap-2 flex-row">
         <Button
           type="reset"

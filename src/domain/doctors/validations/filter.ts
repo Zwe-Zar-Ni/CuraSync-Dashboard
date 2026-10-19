@@ -8,7 +8,8 @@ export const DoctorsFilterValidator = z.object({
   phone_number: z.string().optional(),
   status: z
     .enum(["ACTIVE", "PENDING_VERIFICATION", "INACTIVE", "SUSPENDED", ""])
-    .optional()
+    .optional(),
+  specialization_id: z.number().optional()
 });
 
 export type DoctorsFilterInputType = z.input<typeof DoctorsFilterValidator>;
@@ -18,6 +19,7 @@ const DEFAULT_VALUES: DoctorsFilterInputType = {
   email: "",
   phone_number: "",
   status: undefined,
+  specialization_id: undefined,
   page: 1,
   per_page: 10
 };
