@@ -23,6 +23,12 @@ const router = createBrowserRouter([
       {
         path: "doctors",
         Component: lazy(() => import("@/domain/doctors/pages/DoctorsPage"))
+      },
+      {
+        path: "doctors/:id",
+        Component: lazy(
+          () => import("@/domain/doctors/pages/DoctorDetailsPage")
+        )
       }
     ]
   },

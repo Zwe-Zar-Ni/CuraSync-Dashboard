@@ -7,3 +7,9 @@ export const useGetDoctors = (params: Partial<DoctorsFilterInputType>) =>
     queryKey: ["doctor-profiles", params],
     queryFn: () => doctorService.getDoctors(params)
   });
+
+export const useGetDoctor = (id: number) =>
+  useQuery({
+    queryKey: ["doctor-profile-details", id],
+    queryFn: () => doctorService.getDoctor(id)
+  });

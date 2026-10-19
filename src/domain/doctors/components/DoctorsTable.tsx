@@ -1,5 +1,3 @@
-import type { DoctorProfile, DoctorStatus } from "@/common/types";
-import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
 import {
   Table,
@@ -11,23 +9,11 @@ import {
 } from "@/shared/components/ui/table";
 import { SlidersHorizontal } from "lucide-react";
 import { useNavigate } from "react-router";
+import type { DoctorResource } from "../types";
+import StatusBadge from "./StatusBadge";
 
 type Props = {
-  doctors: DoctorProfile[];
-};
-
-const StatusBadge = ({ status }: { status: DoctorStatus }) => {
-  const color =
-    status === "ACTIVE"
-      ? "bg-green-500"
-      : status === "PENDING_VERIFICATION"
-        ? "bg-blue-500"
-        : "bg-transparent";
-  return (
-    <Badge className={`capitalize ${color}`}>
-      {status.split("_").join(" ").toLowerCase()}
-    </Badge>
-  );
+  doctors: DoctorResource[];
 };
 
 const DoctorsTable = ({ doctors }: Props) => {
@@ -36,7 +22,7 @@ const DoctorsTable = ({ doctors }: Props) => {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>ID</TableHead>
+          <TableHead>Doctor ID</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Name</TableHead>
           <TableHead>Email</TableHead>
@@ -48,25 +34,25 @@ const DoctorsTable = ({ doctors }: Props) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {doctors.map(({ user, profile }) => (
-          <TableRow key={user.id}>
-            <TableCell className="font-medium">{user.id}</TableCell>
+        {doctors.map((doctor) => (
+          <TableRow key={doctor.id}>
+            <TableCell className="font-medium">{doctor.id}</TableCell>
             <TableCell className="capitalize">
-              <StatusBadge status={profile.status} />
+              <StatusBadge status={doctor.status} />
             </TableCell>
-            <TableCell>{user.name}</TableCell>
-            <TableCell>{user.email}</TableCell>
-            <TableCell>{user.phone_number}</TableCell>
-            <TableCell>{profile.standard_consultation_fee} MMK</TableCell>
-            <TableCell>{profile.average_rating}</TableCell>
-            <TableCell>{profile.total_patient_count}</TableCell>
+            <TableCell>{doctor.name}</TableCell>
+            <TableCell>{doctor.email}</TableCell>
+            <TableCell>{doctor.phone_number}</TableCell>
+            <TableCell>{doctor.standard_consultation_fee} MMK</TableCell>
+            <TableCell>{doctor.average_rating}</TableCell>
+            <TableCell>{doctor.total_patient_count}</TableCell>
             <TableCell>
               <Button
                 variant="outline"
                 size="sm"
                 className="min-w-9 h-9"
                 onClick={() => {
-                  navigate(`/dashboard/doctors/${user.id}`);
+                  navigate(`/dashboard/doctors/${doctor.id}`);
                 }}
               >
                 <SlidersHorizontal />
