@@ -1,7 +1,7 @@
 import { httpClient } from "@/common/api/apiClient";
 import type { PaginatedResponse } from "@/common/types";
 import type { DoctorsFilterInputType } from "../validations/filter";
-import type { DoctorResource } from "../types";
+import type { DoctorResource } from "@/common/types/doctor";
 
 class DoctorService {
   async getDoctors(params: Partial<DoctorsFilterInputType>) {

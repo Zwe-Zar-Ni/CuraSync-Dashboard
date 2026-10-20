@@ -1,4 +1,4 @@
-import type { DoctorStatus } from "@/common/types";
+import type { DoctorStatus } from "@/common/types/doctor";
 import { Badge } from "@/shared/components/ui/badge";
 
 const StatusBadge = ({ status }: { status: DoctorStatus }) => {

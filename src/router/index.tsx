@@ -29,6 +29,12 @@ const router = createBrowserRouter([
         Component: lazy(
           () => import("@/domain/doctors/pages/DoctorDetailsPage")
         )
+      },
+      {
+        path: "schedule-requests",
+        Component: lazy(
+          () => import("@/domain/schedule-requests/pages/ScheduleRequestsPage")
+        )
       }
     ]
   },

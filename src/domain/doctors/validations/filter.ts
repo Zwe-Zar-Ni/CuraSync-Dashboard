@@ -18,8 +18,6 @@ const DEFAULT_VALUES: DoctorsFilterInputType = {
   search: "",
   email: "",
   phone_number: "",
-  status: undefined,
-  specialization_id: undefined,
   page: 1,
   per_page: 10
 };

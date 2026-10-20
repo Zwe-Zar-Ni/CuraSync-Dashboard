@@ -1,5 +1,6 @@
 import { httpClient } from "@/common/api/apiClient";
-import type { Specialization, UserProfile } from "../types";
+import type { UserProfile } from "../types";
+import type { Specialization } from "../types/doctor";
 
 class CommonSerivce {
   async getUserProfile() {

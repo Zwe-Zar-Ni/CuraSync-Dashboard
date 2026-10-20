@@ -1,4 +1,4 @@
-import type { Qualification } from "../types";
+import type { Qualification } from "@/common/types/doctor";
 import { Badge } from "@/shared/components/ui/badge";
 
 const QualificationsList = ({
@@ -8,9 +8,7 @@ const QualificationsList = ({
 }) => {
   if (qualifications.length === 0) {
     return (
-      <p className="text-sm text-muted-foreground">
-        No qualifications listed.
-      </p>
+      <p className="text-sm text-muted-foreground">No qualifications listed.</p>
     );
   }
 

@@ -3,8 +3,10 @@ import { Button } from "@/shared/components/ui/button";
 import { useNavigate } from "react-router";
 import { SidebarTrigger } from "@/shared/components/ui/sidebar";
 import { ThemeToggle } from "@/shared/components/ui/theme-toggle";
+import { useGetUserProfile } from "../queries";
 
 const Navbar = () => {
+  const { data: user } = useGetUserProfile();
   const navigate = useNavigate();
 
   return (
@@ -18,11 +20,11 @@ const Navbar = () => {
         >
           <div className="hidden md:block">
             <h3 className="text-start text-text-primary font-medium">
-              {"Admin"}
+              {user?.user.name}
             </h3>
-            <span className="text-xs text-text-secondary">
-              {"admin@gmail.com"}
-            </span>
+            <p className="text-xs text-start text-text-secondary">
+              {user?.user.email}
+            </p>
           </div>
         </Button>
         <ThemeToggle />

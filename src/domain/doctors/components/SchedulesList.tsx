@@ -1,4 +1,4 @@
-import type { Schedule } from "../types";
+import type { Schedule } from "@/common/types/doctor";
 
 const DAYS = [
   "Sunday",

@@ -9,7 +9,7 @@ import {
 } from "@/shared/components/ui/table";
 import { SlidersHorizontal } from "lucide-react";
 import { useNavigate } from "react-router";
-import type { DoctorResource } from "../types";
+import type { DoctorResource } from "@/common/types/doctor";
 import StatusBadge from "./StatusBadge";
 
 type Props = {

@@ -158,7 +158,7 @@ const UsersFilter = ({
           variant="outline"
           className={buttonClass + " border-border"}
           onClick={() => {
-            form.setValues(setDefaultDoctorsFilterValues(undefined));
+            form.reset();
             form.handleSubmit(onSubmit)();
           }}
         >

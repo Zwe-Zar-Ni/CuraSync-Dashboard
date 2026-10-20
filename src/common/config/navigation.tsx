@@ -1,4 +1,4 @@
-import { LayoutDashboard, UserGroup } from "lucide-react";
+import { Calendar, LayoutDashboard, UserGroup } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export type SidebarNavigationItem = {
@@ -20,5 +20,11 @@ export const SidebarNavigation: SidebarNavigationItem[] = [
     name_mm: "ဆရာ၀န်များ",
     icon: UserGroup,
     link: "/dashboard/doctors"
+  },
+  {
+    name: "Schedule Requests",
+    name_mm: "Schedule Request များ",
+    icon: Calendar,
+    link: "/dashboard/schedule-requests"
   }
 ];

@@ -49,20 +49,11 @@ const LoginPage = () => {
 
   return (
     <div className="[@media(min-height:900px)]:p-4 p-7.5 flex md:flex-row flex-col-reverse h-screen items-center gap-4 md:gap-20 max-w-7xl mx-auto">
-      <div className="h-full flex-1 bg-primary overflow-hidden rounded-2xl flex-col flex justify-between items-center md:gap-16 md:px-15 md:py-10 [@media(min-height:900px)]:py-4">
-        <img
-          src="/welcome.png"
-          alt="Welcome"
-          className="md:w-45 md:h-45 w-24 h-24"
-        />
-      </div>
+      <img src="/welcome.png" alt="Welcome" className="flex-1" />
       <div className="flex-1">
         <h1 className="[@media(min-height:900px)]:text-[32px] text-[24px] mb-1 md:mb-4 font-semibold text-text-primary text-center">
-          {t("auth.sign_in")}
+          {t("auth.welcomeBack")}
         </h1>
-        <h3 className="[@media(min-height:900px)]:text-[24px] text-base font-semibold text-text-secondary text-center mb-8 [@media(min-height:900px)]:mb-16">
-          {t("auth.welcome_back")}
-        </h3>
         <form onSubmit={form.handleSubmit(onSubmit)} id="login-form">
           <FieldGroup>
             <Controller
@@ -78,7 +69,7 @@ const LoginPage = () => {
                       {...field}
                       id="login-email"
                       aria-invalid={fieldState.invalid}
-                      placeholder={t("auth.email_placeholder")}
+                      placeholder={"Enter your email"}
                     />
                     <InputGroupAddon>
                       <Mail />
@@ -103,7 +94,7 @@ const LoginPage = () => {
                       {...field}
                       id="login-password"
                       aria-invalid={fieldState.invalid}
-                      placeholder={t("auth.password_placeholder")}
+                      placeholder={"Enter your password"}
                       type={showPassword ? "text" : "password"}
                     />
                     <InputGroupAddon>

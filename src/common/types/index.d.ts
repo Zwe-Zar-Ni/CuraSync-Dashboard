@@ -21,60 +21,14 @@ export type ApiError = {
   };
 };
 
-export type User = {
-  id: number;
-  name: string;
-  email: string;
-  phone_number: string | null;
-  profile_url: string | null;
-};
-
 export type UserProfile = {
-  user: User;
+  user: {
+    id: number;
+    name: string;
+    email: string;
+    phone_number: string | null;
+    profile_url: string | null;
+  };
   role: "admin";
   profile: null;
-};
-
-export type DoctorStatus =
-  | "ACTIVE"
-  | "PENDING_VERIFICATION"
-  | "INACTIVE"
-  | "SUSPENDED";
-
-export type Doctor = {
-  id: number;
-  status: DoctorStatus;
-  license_number: string | null;
-  standard_consultation_fee: number | null;
-  bio: string | null;
-  total_patient_count: number;
-  rating_count: number;
-  average_rating: number;
-};
-
-export type Patient = {
-  id: number;
-  date_of_birth: string | null;
-  gender: "M" | "F" | null;
-  blood_type: string | null;
-};
-
-export type DoctorProfile = {
-  user: User;
-  role: "doctor";
-  profile: Doctor;
-};
-
-export type PatientProfile = {
-  user: User;
-  role: "patient";
-  profile: Patient;
-};
-
-export type Specialization = {
-  id: number;
-  name: string;
-  description: string | null;
-  icon_url: string | null;
-  doctors_count: number;
 };
