@@ -1,9 +1,9 @@
-import { Button } from "@/shared/components/ui/button";
+import { Button } from '@/shared/components/ui/button';
 
-import { useNavigate } from "react-router";
-import { SidebarTrigger } from "@/shared/components/ui/sidebar";
-import { ThemeToggle } from "@/shared/components/ui/theme-toggle";
-import { useGetUserProfile } from "../queries";
+import { useNavigate } from 'react-router';
+import { SidebarTrigger } from '@/shared/components/ui/sidebar';
+import { ThemeToggle } from '@/shared/components/ui/theme-toggle';
+import { useGetUserProfile } from '../queries';
 
 const Navbar = () => {
   const { data: user } = useGetUserProfile();
@@ -16,7 +16,7 @@ const Navbar = () => {
         <Button
           variant="ghost"
           className="flex items-center gap-4 p-0 hover:bg-transparent"
-          onClick={() => navigate("/dashboard")}
+          onClick={() => navigate('/dashboard')}
         >
           <div className="hidden md:block">
             <h3 className="text-start text-text-primary font-medium">

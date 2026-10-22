@@ -29,6 +29,6 @@ export type UserProfile = {
     phone_number: string | null;
     profile_url: string | null;
   };
-  role: "admin";
+  role: 'admin';
   profile: null;
 };

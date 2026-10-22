@@ -1,7 +1,7 @@
-import { useParams } from "react-router";
-import { useGetDoctor } from "../queries";
-import { Badge } from "@/shared/components/ui/badge";
-import { Button } from "@/shared/components/ui/button";
+import { useParams } from 'react-router';
+import { useGetDoctor } from '../queries';
+import { Badge } from '@/shared/components/ui/badge';
+import { Button } from '@/shared/components/ui/button';
 import {
   Star,
   Users,
@@ -14,18 +14,18 @@ import {
   GraduationCap,
   Stethoscope,
   MoreHorizontal,
-  Loader2
-} from "lucide-react";
-import StatusBadge from "../components/StatusBadge";
-import SpecializationsList from "../components/SpecializationsList";
-import QualificationsList from "../components/QualificationsList";
-import SchedulesList from "../components/SchedulesList";
+  Loader2,
+} from 'lucide-react';
+import StatusBadge from '../components/StatusBadge';
+import SpecializationsList from '../components/SpecializationsList';
+import QualificationsList from '../components/QualificationsList';
+import SchedulesList from '../components/SchedulesList';
 
 const Card = ({
   title,
   icon,
   children,
-  className = ""
+  className = '',
 }: {
   title: string;
   icon: React.ReactNode;
@@ -44,7 +44,7 @@ const Card = ({
 const Stat = ({
   icon,
   label,
-  value
+  value,
 }: {
   icon: React.ReactNode;
   label: string;
@@ -145,7 +145,7 @@ const DoctorDetailsPage = () => {
         <Stat
           icon={<CalendarDays className="size-4" />}
           label="Working Days"
-          value={`${doctor.schedules.length} day${doctor.schedules.length === 1 ? "" : "s"}`}
+          value={`${doctor.schedules.length} day${doctor.schedules.length === 1 ? '' : 's'}`}
         />
       </div>
 

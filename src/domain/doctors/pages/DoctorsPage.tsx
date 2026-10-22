@@ -1,20 +1,20 @@
-import { useSearchParams } from "react-router";
-import DoctorsListLoading from "../components/DoctorsListLoading";
-import DoctorsTable from "../components/DoctorsTable";
-import { useGetDoctors } from "../queries";
-import { extractFilters, readFilters, setFilters } from "../utils";
-import { useMemo, useState } from "react";
-import type { DoctorsFilterInputType } from "../validations/filter";
-import { Button } from "@/shared/components/ui/button";
-import { Filter } from "lucide-react";
-import DoctorsFilter from "../components/DoctorsFilter";
+import { useSearchParams } from 'react-router';
+import DoctorsListLoading from '../components/DoctorsListLoading';
+import DoctorsTable from '../components/DoctorsTable';
+import { useGetDoctors } from '../queries';
+import { extractFilters, readFilters, setFilters } from '../utils';
+import { useMemo, useState } from 'react';
+import type { DoctorsFilterInputType } from '../validations/filter';
+import { Button } from '@/shared/components/ui/button';
+import { Filter } from 'lucide-react';
+import DoctorsFilter from '../components/DoctorsFilter';
 import {
   Sheet,
   SheetContent,
   SheetHeader,
-  SheetTitle
-} from "@/shared/components/ui/sheet";
-import Pagination from "@/shared/components/pagination";
+  SheetTitle,
+} from '@/shared/components/ui/sheet';
+import Pagination from '@/shared/components/pagination';
 
 const DoctorsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();

@@ -1,4 +1,4 @@
-import { Navigate } from "react-router";
+import { Navigate } from 'react-router';
 
 const App = () => {
   return <Navigate to="/dashboard" />;

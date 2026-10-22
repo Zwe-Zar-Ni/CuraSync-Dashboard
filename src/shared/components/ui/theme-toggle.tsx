@@ -1,19 +1,19 @@
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun } from 'lucide-react';
 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
-} from "@/shared/components/ui/dropdown-menu";
-import { useTheme } from "@/shared/components/theme-provider";
+  DropdownMenuTrigger,
+} from '@/shared/components/ui/dropdown-menu';
+import { useTheme } from '@/shared/components/theme-provider';
 
 export function ThemeToggle() {
   const { setTheme } = useTheme();
 
-  const setAppTheme = (theme: "light" | "dark" | "system") => {
+  const setAppTheme = (theme: 'light' | 'dark' | 'system') => {
     setTheme(theme);
-    localStorage.setItem("cura-ui-theme", theme);
+    localStorage.setItem('cura-ui-theme', theme);
   };
 
   return (
@@ -26,13 +26,13 @@ export function ThemeToggle() {
         </p>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setAppTheme("light")}>
+        <DropdownMenuItem onClick={() => setAppTheme('light')}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setAppTheme("dark")}>
+        <DropdownMenuItem onClick={() => setAppTheme('dark')}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setAppTheme("system")}>
+        <DropdownMenuItem onClick={() => setAppTheme('system')}>
           System
         </DropdownMenuItem>
       </DropdownMenuContent>

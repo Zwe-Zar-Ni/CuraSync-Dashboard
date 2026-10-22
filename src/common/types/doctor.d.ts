@@ -1,8 +1,5 @@
 export type DoctorStatus =
-  | "ACTIVE"
-  | "PENDING_VERIFICATION"
-  | "INACTIVE"
-  | "SUSPENDED";
+  'ACTIVE' | 'PENDING_VERIFICATION' | 'INACTIVE' | 'SUSPENDED';
 
 export type DoctorResource = {
   id: number;

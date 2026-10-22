@@ -1,4 +1,4 @@
-import { Skeleton } from "@/shared/components/ui/skeleton";
+import { Skeleton } from '@/shared/components/ui/skeleton';
 
 const ScheduleRequestsListLoading = () => {
   return (
@@ -6,10 +6,7 @@ const ScheduleRequestsListLoading = () => {
       {Array(10)
         .fill(0)
         .map((_, index) => (
-          <div
-            key={index}
-            className="grid grid-cols-9 gap-1 my-2 items-center"
-          >
+          <div key={index} className="grid grid-cols-9 gap-1 my-2 items-center">
             <Skeleton className="w-full h-10 rounded-lg" />
             <Skeleton className="w-full h-10 rounded-lg" />
             <Skeleton className="w-full h-10 rounded-lg" />

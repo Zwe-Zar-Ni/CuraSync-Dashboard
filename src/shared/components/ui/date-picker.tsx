@@ -1,14 +1,14 @@
-import { ChevronDownIcon } from "lucide-react";
+import { ChevronDownIcon } from 'lucide-react';
 
-import { Button } from "@/shared/components/ui/button";
-import { Calendar } from "@/shared/components/ui/calendar";
+import { Button } from '@/shared/components/ui/button';
+import { Calendar } from '@/shared/components/ui/calendar';
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger
-} from "@/shared/components/ui/popover";
-import { useState } from "react";
-import dayjs from "dayjs";
+  PopoverTrigger,
+} from '@/shared/components/ui/popover';
+import { useState } from 'react';
+import dayjs from 'dayjs';
 
 export function DatePicker() {
   const [date, setDate] = useState<Date>();
@@ -18,11 +18,11 @@ export function DatePicker() {
       <PopoverTrigger
         render={
           <Button
-            variant={"outline"}
+            variant={'outline'}
             data-empty={!date}
             className="w-53 justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
           >
-            {date ? dayjs(date).format("YYYY-MM-DD") : <span>Pick a date</span>}
+            {date ? dayjs(date).format('YYYY-MM-DD') : <span>Pick a date</span>}
             <ChevronDownIcon data-icon="inline-end" />
           </Button>
         }

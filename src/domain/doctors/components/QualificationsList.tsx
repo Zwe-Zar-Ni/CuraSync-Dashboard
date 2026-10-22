@@ -1,8 +1,8 @@
-import type { Qualification } from "@/common/types/doctor";
-import { Badge } from "@/shared/components/ui/badge";
+import type { Qualification } from '@/common/types/doctor';
+import { Badge } from '@/shared/components/ui/badge';
 
 const QualificationsList = ({
-  qualifications
+  qualifications,
 }: {
   qualifications: Qualification[];
 }) => {

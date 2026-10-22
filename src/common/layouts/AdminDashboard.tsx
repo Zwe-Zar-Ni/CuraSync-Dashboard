@@ -1,8 +1,8 @@
-import { Outlet, useNavigate } from "react-router";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
-import { SidebarProvider, SidebarInset } from "@/shared/components/ui/sidebar";
-import useAuth from "../hooks/useAuth";
+import { Outlet, useNavigate } from 'react-router';
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
+import { SidebarProvider, SidebarInset } from '@/shared/components/ui/sidebar';
+import useAuth from '../hooks/useAuth';
 
 const AdminDashboard = () => {
   const { isLoading, isAuthenticated } = useAuth();
@@ -16,8 +16,8 @@ const AdminDashboard = () => {
     );
   }
   if (!isAuthenticated) {
-    navigate("/login", {
-      replace: true
+    navigate('/login', {
+      replace: true,
     });
   }
 

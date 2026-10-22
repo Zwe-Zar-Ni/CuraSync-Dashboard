@@ -1,4 +1,4 @@
-const TOKEN_KEY = "accessToken";
+const TOKEN_KEY = 'accessToken';
 
 export const setToken = (token: string) => {
   localStorage.setItem(TOKEN_KEY, token);

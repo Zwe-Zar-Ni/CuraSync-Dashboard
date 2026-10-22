@@ -1,8 +1,8 @@
-import type { Specialization } from "@/common/types/doctor";
-import { Stethoscope } from "lucide-react";
+import type { Specialization } from '@/common/types/doctor';
+import { Stethoscope } from 'lucide-react';
 
 const SpecializationsList = ({
-  specializations
+  specializations,
 }: {
   specializations: Specialization[];
 }) => {

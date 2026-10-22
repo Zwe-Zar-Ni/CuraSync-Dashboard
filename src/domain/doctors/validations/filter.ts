@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const DoctorsFilterValidator = z.object({
   page: z.number().optional(),
@@ -7,23 +7,23 @@ export const DoctorsFilterValidator = z.object({
   email: z.string().optional(),
   phone_number: z.string().optional(),
   status: z
-    .enum(["ACTIVE", "PENDING_VERIFICATION", "INACTIVE", "SUSPENDED", ""])
+    .enum(['ACTIVE', 'PENDING_VERIFICATION', 'INACTIVE', 'SUSPENDED', ''])
     .optional(),
-  specialization_id: z.number().optional()
+  specialization_id: z.number().optional(),
 });
 
 export type DoctorsFilterInputType = z.input<typeof DoctorsFilterValidator>;
 
 const DEFAULT_VALUES: DoctorsFilterInputType = {
-  search: "",
-  email: "",
-  phone_number: "",
+  search: '',
+  email: '',
+  phone_number: '',
   page: 1,
-  per_page: 10
+  per_page: 10,
 };
 
 export function setDefaultDoctorsFilterValues(
-  initial?: Partial<DoctorsFilterInputType>
+  initial?: Partial<DoctorsFilterInputType>,
 ): DoctorsFilterInputType {
   return { ...DEFAULT_VALUES, ...initial };
 }

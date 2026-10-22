@@ -1,8 +1,8 @@
-import type { DoctorStatus } from "../types";
+import type { DoctorStatus } from '../types/doctor';
 
 export const DOCTOR_STATUSES = [
-  "ACTIVE",
-  "PENDING_VERIFICATION",
-  "INACTIVE",
-  "SUSPENDED"
+  'ACTIVE',
+  'PENDING_VERIFICATION',
+  'INACTIVE',
+  'SUSPENDED',
 ] as DoctorStatus[];

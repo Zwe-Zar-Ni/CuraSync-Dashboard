@@ -1,13 +1,13 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/shared/components/ui/button";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '@/shared/components/ui/button';
 import {
   MultiSelect,
   MultiSelectContent,
   MultiSelectGroup,
   MultiSelectItem,
   MultiSelectTrigger,
-  MultiSelectValue
-} from "@/shared/components/ui/multi-select";
+  MultiSelectValue,
+} from '@/shared/components/ui/multi-select';
 
 type Props = {
   currentPage: number;
@@ -26,7 +26,7 @@ const Pagination = ({
   total,
   perPage,
   onPageChange,
-  onPerPageChange
+  onPerPageChange,
 }: Props) => {
   return (
     <div className="my-4 flex items-center justify-between">
@@ -94,14 +94,14 @@ const Pagination = ({
                 ) : (
                   <Button
                     key={p}
-                    variant={p === currentPage ? "default" : "outline"}
+                    variant={p === currentPage ? 'default' : 'outline'}
                     size="sm"
                     className="min-w-9"
                     onClick={() => onPageChange(p)}
                   >
                     {p}
                   </Button>
-                )
+                ),
               );
             })()}
 

@@ -1,12 +1,12 @@
-import { httpClient } from "@/common/api/apiClient";
-import type { PaginatedResponse } from "@/common/types";
-import type { DoctorsFilterInputType } from "../validations/filter";
-import type { DoctorResource } from "@/common/types/doctor";
+import { httpClient } from '@/common/api/apiClient';
+import type { PaginatedResponse } from '@/common/types';
+import type { DoctorsFilterInputType } from '../validations/filter';
+import type { DoctorResource } from '@/common/types/doctor';
 
 class DoctorService {
   async getDoctors(params: Partial<DoctorsFilterInputType>) {
-    const response = await httpClient.get("/admin/doctors", {
-      params
+    const response = await httpClient.get('/admin/doctors', {
+      params,
     });
     return response.data as PaginatedResponse<DoctorResource>;
   }

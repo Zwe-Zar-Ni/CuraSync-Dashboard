@@ -1,5 +1,5 @@
-import { Calendar, LayoutDashboard, UserGroup } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { Calendar, LayoutDashboard, UserGroup } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 export type SidebarNavigationItem = {
   name: string;
@@ -10,21 +10,21 @@ export type SidebarNavigationItem = {
 
 export const SidebarNavigation: SidebarNavigationItem[] = [
   {
-    name: "Dashboard",
-    name_mm: "ဒက်ရှ်ဘုတ်",
+    name: 'Dashboard',
+    name_mm: 'ဒက်ရှ်ဘုတ်',
     icon: LayoutDashboard,
-    link: "/dashboard"
+    link: '/dashboard',
   },
   {
-    name: "Doctors",
-    name_mm: "ဆရာ၀န်များ",
+    name: 'Doctors',
+    name_mm: 'ဆရာ၀န်များ',
     icon: UserGroup,
-    link: "/dashboard/doctors"
+    link: '/dashboard/doctors',
   },
   {
-    name: "Schedule Requests",
-    name_mm: "Schedule Request များ",
+    name: 'Schedule Requests',
+    name_mm: 'Schedule Request များ',
     icon: Calendar,
-    link: "/dashboard/schedule-requests"
-  }
+    link: '/dashboard/schedule-requests',
+  },
 ];

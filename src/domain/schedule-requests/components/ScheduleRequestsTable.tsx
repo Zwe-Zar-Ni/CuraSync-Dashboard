@@ -1,24 +1,24 @@
-import { Badge } from "@/shared/components/ui/badge";
+import { Badge } from '@/shared/components/ui/badge';
 import {
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
-} from "@/shared/components/ui/table";
-import type { ScheduleRequest, ScheduleRequestType } from "../types";
-import { dayOfWeekLabel } from "../constants";
-import StatusBadge from "./StatusBadge";
+  TableRow,
+} from '@/shared/components/ui/table';
+import type { ScheduleRequest, ScheduleRequestType } from '../types';
+import { dayOfWeekLabel } from '../constants';
+import StatusBadge from './StatusBadge';
 
 type Props = {
   requests: ScheduleRequest[];
 };
 
 const REQUEST_TYPE_COLORS: Record<ScheduleRequestType, string> = {
-  CREATE: "bg-blue-500",
-  UPDATE: "bg-yellow-500",
-  DELETE: "bg-red-500"
+  CREATE: 'bg-blue-500',
+  UPDATE: 'bg-yellow-500',
+  DELETE: 'bg-red-500',
 };
 
 const ScheduleRequestsTable = ({ requests }: Props) => {
@@ -45,7 +45,9 @@ const ScheduleRequestsTable = ({ requests }: Props) => {
               <StatusBadge status={request.status} />
             </TableCell>
             <TableCell>
-              <Badge className={`capitalize ${REQUEST_TYPE_COLORS[request.request_type]}`}>
+              <Badge
+                className={`capitalize ${REQUEST_TYPE_COLORS[request.request_type]}`}
+              >
                 {request.request_type}
               </Badge>
             </TableCell>

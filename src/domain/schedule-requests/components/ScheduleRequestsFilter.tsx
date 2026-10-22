@@ -1,46 +1,46 @@
-import { RotateCcw, Search } from "lucide-react";
-import { Input } from "@/shared/components/ui/input";
-import { Button } from "@/shared/components/ui/button";
+import { RotateCcw, Search } from 'lucide-react';
+import { Input } from '@/shared/components/ui/input';
+import { Button } from '@/shared/components/ui/button';
 import {
   MultiSelect,
   MultiSelectContent,
   MultiSelectGroup,
   MultiSelectItem,
   MultiSelectTrigger,
-  MultiSelectValue
-} from "@/shared/components/ui/multi-select";
-import { zodResolver } from "@hookform/resolvers/zod";
+  MultiSelectValue,
+} from '@/shared/components/ui/multi-select';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   setDefaultScheduleRequestsFilterValues,
   ScheduleRequestsFilterValidator,
-  type ScheduleRequestFilterInputType
-} from "../validations/filter";
-import { Controller, useForm, type Resolver } from "react-hook-form";
-import { Field } from "@/shared/components/ui/field";
+  type ScheduleRequestFilterInputType,
+} from '../validations/filter';
+import { Controller, useForm, type Resolver } from 'react-hook-form';
+import { Field } from '@/shared/components/ui/field';
 import {
   DAYS_OF_WEEK,
   SCHEDULE_REQUEST_STATUSES,
-  SCHEDULE_REQUEST_TYPES
-} from "../constants";
+  SCHEDULE_REQUEST_TYPES,
+} from '../constants';
 
 type ScheduleRequestsFilterProps = {
   values: ScheduleRequestFilterInputType;
   onSearch: (values: ScheduleRequestFilterInputType) => void;
-  layout?: "row" | "col";
+  layout?: 'row' | 'col';
 };
 
 const ScheduleRequestsFilter = ({
   values,
   onSearch,
-  layout = "row"
+  layout = 'row',
 }: ScheduleRequestsFilterProps) => {
   const resolver = zodResolver(
-    ScheduleRequestsFilterValidator
+    ScheduleRequestsFilterValidator,
   ) as Resolver<ScheduleRequestFilterInputType>;
 
   const form = useForm<ScheduleRequestFilterInputType>({
     resolver,
-    defaultValues: setDefaultScheduleRequestsFilterValues(values)
+    defaultValues: setDefaultScheduleRequestsFilterValues(values),
   });
 
   const onSubmit = (data: ScheduleRequestFilterInputType) => {
@@ -48,10 +48,10 @@ const ScheduleRequestsFilter = ({
   };
 
   console.log(form.formState.errors);
-  const formLayout = layout === "row" ? "flex-row" : "flex-col px-4";
-  const inputClass = layout === "row" ? "w-44 h-10" : "w-full h-10";
-  const selectClass = layout === "row" ? "w-36 h-10" : "w-full h-10";
-  const buttonClass = layout === "row" ? "w-10 h-10" : "grow h-10";
+  const formLayout = layout === 'row' ? 'flex-row' : 'flex-col px-4';
+  const inputClass = layout === 'row' ? 'w-44 h-10' : 'w-full h-10';
+  const selectClass = layout === 'row' ? 'w-36 h-10' : 'w-full h-10';
+  const buttonClass = layout === 'row' ? 'w-10 h-10' : 'grow h-10';
 
   return (
     <form
@@ -65,10 +65,10 @@ const ScheduleRequestsFilter = ({
           <Field className={inputClass}>
             <Input
               {...field}
-              value={field.value?.toString() ?? ""}
+              value={field.value?.toString() ?? ''}
               onChange={(event) =>
                 field.onChange(
-                  event.target.value ? Number(event.target.value) : undefined
+                  event.target.value ? Number(event.target.value) : undefined,
                 )
               }
               placeholder="Doctor ID"
@@ -141,7 +141,7 @@ const ScheduleRequestsFilter = ({
               values={field.value !== undefined ? [field.value.toString()] : []}
               onValuesChange={(values) =>
                 field.onChange(
-                  values[0] !== undefined ? Number(values[0]) : undefined
+                  values[0] !== undefined ? Number(values[0]) : undefined,
                 )
               }
               single={true}
@@ -173,7 +173,7 @@ const ScheduleRequestsFilter = ({
           <Field className={inputClass}>
             <Input
               {...field}
-              value={field.value ?? ""}
+              value={field.value ?? ''}
               type="date"
               placeholder="From Date"
               className={inputClass}
@@ -189,7 +189,7 @@ const ScheduleRequestsFilter = ({
           <Field className={inputClass}>
             <Input
               {...field}
-              value={field.value ?? ""}
+              value={field.value ?? ''}
               type="date"
               placeholder="To Date"
               className={inputClass}
@@ -202,7 +202,7 @@ const ScheduleRequestsFilter = ({
         <Button
           type="reset"
           variant="outline"
-          className={buttonClass + " border-border"}
+          className={buttonClass + ' border-border'}
           onClick={() => {
             form.reset();
             form.handleSubmit(onSubmit)();

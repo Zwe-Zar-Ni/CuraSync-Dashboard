@@ -1,4 +1,4 @@
-import { useGetUserProfile } from "../queries";
+import { useGetUserProfile } from '../queries';
 
 const useAuth = () => {
   const { data, isLoading, isError } = useGetUserProfile();
@@ -6,7 +6,7 @@ const useAuth = () => {
     isLoading,
     isError,
     isAuthenticated: !!data && !isError,
-    user: data
+    user: data,
   };
 };
 

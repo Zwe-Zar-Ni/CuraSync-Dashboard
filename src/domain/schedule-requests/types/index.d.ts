@@ -1,8 +1,8 @@
-import type { DoctorResource } from "@/common/types/doctor";
+import type { DoctorResource } from '@/common/types/doctor';
 
-export type ScheduleRequestType = "CREATE" | "UPDATE" | "DELETE";
+export type ScheduleRequestType = 'CREATE' | 'UPDATE' | 'DELETE';
 
-export type ScheduleRequestStatus = "PENDING" | "APPROVED" | "REJECTED";
+export type ScheduleRequestStatus = 'PENDING' | 'APPROVED' | 'REJECTED';
 
 export type ScheduleRequestUser = {
   id: number;

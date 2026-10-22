@@ -1,55 +1,55 @@
-import { RotateCcw, Search } from "lucide-react";
-import { Input } from "@/shared/components/ui/input";
-import { Button } from "@/shared/components/ui/button";
+import { RotateCcw, Search } from 'lucide-react';
+import { Input } from '@/shared/components/ui/input';
+import { Button } from '@/shared/components/ui/button';
 import {
   MultiSelect,
   MultiSelectContent,
   MultiSelectGroup,
   MultiSelectItem,
   MultiSelectTrigger,
-  MultiSelectValue
-} from "@/shared/components/ui/multi-select";
-import { zodResolver } from "@hookform/resolvers/zod";
+  MultiSelectValue,
+} from '@/shared/components/ui/multi-select';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   setDefaultDoctorsFilterValues,
   DoctorsFilterValidator,
-  type DoctorsFilterInputType
-} from "../validations/filter";
-import { Controller, useForm, type Resolver } from "react-hook-form";
-import { Field } from "@/shared/components/ui/field";
-import { DOCTOR_STATUSES } from "@/common/constants/doctor";
-import { useGetSpecializations } from "@/common/queries";
+  type DoctorsFilterInputType,
+} from '../validations/filter';
+import { Controller, useForm, type Resolver } from 'react-hook-form';
+import { Field } from '@/shared/components/ui/field';
+import { DOCTOR_STATUSES } from '@/common/constants/doctor';
+import { useGetSpecializations } from '@/common/queries';
 
 type UsersFilterProps = {
   values: DoctorsFilterInputType;
   onSearch: (values: DoctorsFilterInputType) => void;
-  layout?: "row" | "col";
+  layout?: 'row' | 'col';
 };
 
 const UsersFilter = ({
   values,
   onSearch,
-  layout = "row"
+  layout = 'row',
 }: UsersFilterProps) => {
   const resolver = zodResolver(
-    DoctorsFilterValidator
+    DoctorsFilterValidator,
   ) as Resolver<DoctorsFilterInputType>;
 
   const { data: specializations } = useGetSpecializations();
 
   const form = useForm<DoctorsFilterInputType>({
     resolver,
-    defaultValues: setDefaultDoctorsFilterValues(values)
+    defaultValues: setDefaultDoctorsFilterValues(values),
   });
 
   const onSubmit = (data: DoctorsFilterInputType) => {
     onSearch(data);
   };
 
-  const formLayout = layout === "row" ? "flex-row" : "flex-col px-4";
-  const inputClass = layout === "row" ? "w-52 h-10" : "w-full h-10";
-  const selectClass = layout === "row" ? "w-40 h-10" : "w-full h-10";
-  const buttonClass = layout === "row" ? "w-10 h-10" : "grow h-10";
+  const formLayout = layout === 'row' ? 'flex-row' : 'flex-col px-4';
+  const inputClass = layout === 'row' ? 'w-52 h-10' : 'w-full h-10';
+  const selectClass = layout === 'row' ? 'w-40 h-10' : 'w-full h-10';
+  const buttonClass = layout === 'row' ? 'w-10 h-10' : 'grow h-10';
 
   return (
     <form
@@ -136,7 +136,7 @@ const UsersFilter = ({
               </MultiSelectTrigger>
               <MultiSelectContent search={true}>
                 <MultiSelectGroup>
-                  <MultiSelectItem value={"0"}>All</MultiSelectItem>
+                  <MultiSelectItem value={'0'}>All</MultiSelectItem>
                   {specializations?.map((specialization) => (
                     <MultiSelectItem
                       key={specialization.id}
@@ -156,7 +156,7 @@ const UsersFilter = ({
         <Button
           type="reset"
           variant="outline"
-          className={buttonClass + " border-border"}
+          className={buttonClass + ' border-border'}
           onClick={() => {
             form.reset();
             form.handleSubmit(onSubmit)();

@@ -1,16 +1,16 @@
-import { Button } from "@/shared/components/ui/button";
+import { Button } from '@/shared/components/ui/button';
 import {
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
-} from "@/shared/components/ui/table";
-import { SlidersHorizontal } from "lucide-react";
-import { useNavigate } from "react-router";
-import type { DoctorResource } from "@/common/types/doctor";
-import StatusBadge from "./StatusBadge";
+  TableRow,
+} from '@/shared/components/ui/table';
+import { SlidersHorizontal } from 'lucide-react';
+import { useNavigate } from 'react-router';
+import type { DoctorResource } from '@/common/types/doctor';
+import StatusBadge from './StatusBadge';
 
 type Props = {
   doctors: DoctorResource[];

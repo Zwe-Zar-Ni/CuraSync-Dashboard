@@ -1,20 +1,20 @@
-import { useSearchParams } from "react-router";
-import { useMemo, useState } from "react";
-import { Filter } from "lucide-react";
-import { Button } from "@/shared/components/ui/button";
+import { useSearchParams } from 'react-router';
+import { useMemo, useState } from 'react';
+import { Filter } from 'lucide-react';
+import { Button } from '@/shared/components/ui/button';
 import {
   Sheet,
   SheetContent,
   SheetHeader,
-  SheetTitle
-} from "@/shared/components/ui/sheet";
-import Pagination from "@/shared/components/pagination";
-import ScheduleRequestsListLoading from "../components/ScheduleRequestsListLoading";
-import ScheduleRequestsTable from "../components/ScheduleRequestsTable";
-import ScheduleRequestsFilter from "../components/ScheduleRequestsFilter";
-import { useGetRequests } from "../queries";
-import { extractFilters, readFilters, setFilters } from "../utils";
-import type { ScheduleRequestFilterInputType } from "../validations/filter";
+  SheetTitle,
+} from '@/shared/components/ui/sheet';
+import Pagination from '@/shared/components/pagination';
+import ScheduleRequestsListLoading from '../components/ScheduleRequestsListLoading';
+import ScheduleRequestsTable from '../components/ScheduleRequestsTable';
+import ScheduleRequestsFilter from '../components/ScheduleRequestsFilter';
+import { useGetRequests } from '../queries';
+import { extractFilters, readFilters, setFilters } from '../utils';
+import type { ScheduleRequestFilterInputType } from '../validations/filter';
 
 const ScheduleRequestsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();

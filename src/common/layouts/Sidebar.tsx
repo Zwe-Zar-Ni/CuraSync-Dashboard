@@ -1,9 +1,9 @@
-import { SidebarNavigation } from "../config/navigation";
-import { NavLink, useLocation } from "react-router";
-import { removeToken } from "../utils/auth";
-import { useLogout } from "../queries";
+import { SidebarNavigation } from '../config/navigation';
+import { NavLink, useLocation } from 'react-router';
+import { removeToken } from '../utils/auth';
+import { useLogout } from '../queries';
 
-import { Button } from "@/shared/components/ui/button";
+import { Button } from '@/shared/components/ui/button';
 import {
   Sidebar as SidebarPrimitive,
   SidebarGroupContent,
@@ -13,9 +13,9 @@ import {
   SidebarGroup,
   SidebarHeader,
   SidebarMenuButton,
-  useSidebar
-} from "@/shared/components/ui/sidebar";
-import { LogOut } from "lucide-react";
+  useSidebar,
+} from '@/shared/components/ui/sidebar';
+import { LogOut } from 'lucide-react';
 
 const Sidebar = () => {
   const { pathname } = useLocation();
@@ -26,7 +26,7 @@ const Sidebar = () => {
   const handleLogout = () => {
     logout.mutate(undefined);
     removeToken();
-    window.location.assign("/");
+    window.location.assign('/');
   };
 
   return (
@@ -50,22 +50,22 @@ const Sidebar = () => {
                 >
                   <NavLink
                     to={item.link}
-                    className={`flex items-center w-full gap-2.5 p-3.5 border-r-2 ${pathname === item.link ? "bg-secondary border-primary" : "bg-transparent border-transparent"}`}
+                    className={`flex items-center w-full gap-2.5 p-3.5 border-r-2 ${pathname === item.link ? 'bg-secondary border-primary' : 'bg-transparent border-transparent'}`}
                     onClick={() => setOpenMobile(false)}
                   >
                     <item.icon
                       size={24}
-                      color={pathname === item.link ? "#c70036" : "#848484"}
+                      color={pathname === item.link ? '#c70036' : '#848484'}
                       strokeWidth={2}
                     />
                     <p className="flex flex-col">
                       <span
-                        className={`${pathname === item.link ? "text-primary" : "text-text-primary/80"} text-sm`}
+                        className={`${pathname === item.link ? 'text-primary' : 'text-text-primary/80'} text-sm`}
                       >
                         {item.name}
                       </span>
                       <span
-                        className={`${pathname === item.link ? "text-primary" : "text-text-secondary"} text-xs`}
+                        className={`${pathname === item.link ? 'text-primary' : 'text-text-secondary'} text-xs`}
                       >
                         {item.name_mm}
                       </span>

@@ -1,12 +1,12 @@
-import { httpClient } from "@/common/api/apiClient";
-import type { PaginatedResponse } from "@/common/types";
-import type { ScheduleRequestFilterInputType } from "../validations/filter";
-import type { ScheduleRequest } from "../types";
+import { httpClient } from '@/common/api/apiClient';
+import type { PaginatedResponse } from '@/common/types';
+import type { ScheduleRequestFilterInputType } from '../validations/filter';
+import type { ScheduleRequest } from '../types';
 
 class ScheduleRequestService {
   async getRequests(params: Partial<ScheduleRequestFilterInputType>) {
-    const response = await httpClient.get("/admin/schedule-requests", {
-      params
+    const response = await httpClient.get('/admin/schedule-requests', {
+      params,
     });
     return response.data as PaginatedResponse<ScheduleRequest>;
   }

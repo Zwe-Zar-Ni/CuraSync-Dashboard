@@ -1,24 +1,24 @@
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { LoginValidator, type LoginSchema } from "../validations";
-import { useForm, Controller, type SubmitHandler } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useLogin } from "../queries";
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { LoginValidator, type LoginSchema } from '../validations';
+import { useForm, Controller, type SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useLogin } from '../queries';
 
-import { Eye, EyeOff, Lock, Mail } from "lucide-react";
-import { Button } from "@/shared/components/ui/button";
+import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
+import { Button } from '@/shared/components/ui/button';
 import {
   Field,
   FieldError,
   FieldGroup,
-  FieldLabel
-} from "@/shared/components/ui/field";
+  FieldLabel,
+} from '@/shared/components/ui/field';
 import {
   InputGroup,
   InputGroupAddon,
-  InputGroupInput
-} from "@/shared/components/ui/input-group";
-import { setToken } from "@/common/utils/auth";
+  InputGroupInput,
+} from '@/shared/components/ui/input-group';
+import { setToken } from '@/common/utils/auth';
 
 const LoginPage = () => {
   const { t } = useTranslation();
@@ -26,7 +26,7 @@ const LoginPage = () => {
 
   const form = useForm<LoginSchema>({
     resolver: zodResolver(LoginValidator),
-    defaultValues: undefined
+    defaultValues: undefined,
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -35,15 +35,15 @@ const LoginPage = () => {
     mutation.mutate(data, {
       onSuccess: (data) => {
         setToken(data.token);
-        window.location.assign("/dashboard");
+        window.location.assign('/dashboard');
       },
       onError: (error) => {
         Object.entries(error.data.errors).forEach(([key, value]) => {
           form.setError(key as keyof LoginSchema, {
-            message: value[0]
+            message: value[0],
           });
         });
-      }
+      },
     });
   };
 
@@ -52,7 +52,7 @@ const LoginPage = () => {
       <img src="/welcome.png" alt="Welcome" className="flex-1" />
       <div className="flex-1">
         <h1 className="[@media(min-height:900px)]:text-[32px] text-[24px] mb-1 md:mb-4 font-semibold text-text-primary text-center">
-          {t("auth.welcomeBack")}
+          {t('auth.welcomeBack')}
         </h1>
         <form onSubmit={form.handleSubmit(onSubmit)} id="login-form">
           <FieldGroup>
@@ -62,14 +62,14 @@ const LoginPage = () => {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="login-email">
-                    {t("labels.email")}
+                    {t('labels.email')}
                   </FieldLabel>
                   <InputGroup>
                     <InputGroupInput
                       {...field}
                       id="login-email"
                       aria-invalid={fieldState.invalid}
-                      placeholder={"Enter your email"}
+                      placeholder={'Enter your email'}
                     />
                     <InputGroupAddon>
                       <Mail />
@@ -87,15 +87,15 @@ const LoginPage = () => {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="login-password">
-                    {t("labels.password")}
+                    {t('labels.password')}
                   </FieldLabel>
                   <InputGroup>
                     <InputGroupInput
                       {...field}
                       id="login-password"
                       aria-invalid={fieldState.invalid}
-                      placeholder={"Enter your password"}
-                      type={showPassword ? "text" : "password"}
+                      placeholder={'Enter your password'}
+                      type={showPassword ? 'text' : 'password'}
                     />
                     <InputGroupAddon>
                       <Lock />
@@ -124,7 +124,7 @@ const LoginPage = () => {
               form="login-form"
               disabled={mutation.isPending}
             >
-              {t("auth.submit")}
+              {t('auth.submit')}
             </Button>
           </Field>
         </form>
