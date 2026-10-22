@@ -8,8 +8,9 @@ import {
   TableRow,
 } from '@/shared/components/ui/table';
 import type { ScheduleRequest, ScheduleRequestType } from '../types';
-import { dayOfWeekLabel } from '../constants';
 import StatusBadge from './StatusBadge';
+import dayjs from 'dayjs';
+import { getDayOfWeekLabel } from '@/common/utils/doctor';
 
 type Props = {
   requests: ScheduleRequest[];
@@ -54,14 +55,14 @@ const ScheduleRequestsTable = ({ requests }: Props) => {
             <TableCell>{request.doctor.name}</TableCell>
             <TableCell>{request.doctor.phone_number}</TableCell>
             <TableCell className="capitalize">
-              {dayOfWeekLabel(request.data.day_of_week)}
+              {getDayOfWeekLabel(request.data.day_of_week)}
             </TableCell>
             <TableCell>
               {request.data.start_time} - {request.data.end_time}
             </TableCell>
             <TableCell>{request.data.slot_duration_minutes} min</TableCell>
             <TableCell>
-              {new Date(request.created_at).toLocaleDateString()}
+              {dayjs(request.created_at).format('YYYY-MMM-DD')}
             </TableCell>
           </TableRow>
         ))}

@@ -3,7 +3,6 @@ import { z } from 'zod';
 export const ScheduleRequestsFilterValidator = z.object({
   page: z.number().optional(),
   per_page: z.number().optional(),
-  doctor_id: z.number().optional(),
   request_type: z.enum(['CREATE', 'UPDATE', 'DELETE']).optional(),
   status: z.enum(['PENDING', 'APPROVED', 'REJECTED']).optional(),
   from_date: z.string().optional(),

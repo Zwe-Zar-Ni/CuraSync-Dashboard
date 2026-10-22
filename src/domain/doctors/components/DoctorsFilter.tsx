@@ -48,7 +48,6 @@ const UsersFilter = ({
 
   const formLayout = layout === 'row' ? 'flex-row' : 'flex-col px-4';
   const inputClass = layout === 'row' ? 'w-52 h-10' : 'w-full h-10';
-  const selectClass = layout === 'row' ? 'w-40 h-10' : 'w-full h-10';
   const buttonClass = layout === 'row' ? 'w-10 h-10' : 'grow h-10';
 
   return (
@@ -98,13 +97,13 @@ const UsersFilter = ({
         name="status"
         control={form.control}
         render={({ field }) => (
-          <Field className={selectClass}>
+          <Field className={inputClass}>
             <MultiSelect
               values={field.value ? [field.value.toString()] : []}
               onValuesChange={(values) => field.onChange(values[0])}
               single={true}
             >
-              <MultiSelectTrigger className={selectClass}>
+              <MultiSelectTrigger className={inputClass}>
                 <MultiSelectValue placeholder="Status" />
               </MultiSelectTrigger>
               <MultiSelectContent search={true}>
@@ -125,13 +124,13 @@ const UsersFilter = ({
         name="specialization_id"
         control={form.control}
         render={({ field }) => (
-          <Field className={selectClass}>
+          <Field className={inputClass}>
             <MultiSelect
               values={field.value ? [field.value.toString()] : []}
               onValuesChange={(values) => field.onChange(Number(values[0]))}
               single={true}
             >
-              <MultiSelectTrigger className={selectClass}>
+              <MultiSelectTrigger className={inputClass}>
                 <MultiSelectValue placeholder="Specialization" />
               </MultiSelectTrigger>
               <MultiSelectContent search={true}>
@@ -156,7 +155,7 @@ const UsersFilter = ({
         <Button
           type="reset"
           variant="outline"
-          className={buttonClass + ' border-border'}
+          className={buttonClass}
           onClick={() => {
             form.reset();
             form.handleSubmit(onSubmit)();

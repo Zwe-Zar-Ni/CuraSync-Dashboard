@@ -5,9 +5,6 @@ export function readFilters(
   params: URLSearchParams,
 ): ScheduleRequestFilterInputType {
   return {
-    doctor_id: params.get('doctor_id')
-      ? Number(params.get('doctor_id'))
-      : undefined,
     request_type: params.get('request_type')
       ? (params.get('request_type') as ScheduleRequestType)
       : undefined,
@@ -27,7 +24,6 @@ export function readFilters(
 
 export function setFilters(params: ScheduleRequestFilterInputType) {
   const next = new URLSearchParams();
-  if (params.doctor_id) next.set('doctor_id', params.doctor_id.toString());
   if (params.request_type)
     next.set('request_type', params.request_type.toString());
   if (params.status) next.set('status', params.status.toString());
@@ -45,7 +41,6 @@ export function extractFilters(
 ): ScheduleRequestFilterInputType {
   return {
     ...params,
-    doctor_id: params.doctor_id ? params.doctor_id : undefined,
     request_type: params.request_type ? params.request_type : undefined,
     status: params.status ? params.status : undefined,
     from_date: params.from_date ? params.from_date : undefined,

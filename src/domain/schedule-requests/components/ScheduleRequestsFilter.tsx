@@ -1,5 +1,4 @@
 import { RotateCcw, Search } from 'lucide-react';
-import { Input } from '@/shared/components/ui/input';
 import { Button } from '@/shared/components/ui/button';
 import {
   MultiSelect,
@@ -18,10 +17,11 @@ import {
 import { Controller, useForm, type Resolver } from 'react-hook-form';
 import { Field } from '@/shared/components/ui/field';
 import {
-  DAYS_OF_WEEK,
   SCHEDULE_REQUEST_STATUSES,
   SCHEDULE_REQUEST_TYPES,
 } from '../constants';
+import { DatePicker } from '@/shared/components/ui/date-picker';
+import { DAYS } from '@/common/utils/doctor';
 
 type ScheduleRequestsFilterProps = {
   values: ScheduleRequestFilterInputType;
@@ -47,10 +47,8 @@ const ScheduleRequestsFilter = ({
     onSearch(data);
   };
 
-  console.log(form.formState.errors);
   const formLayout = layout === 'row' ? 'flex-row' : 'flex-col px-4';
   const inputClass = layout === 'row' ? 'w-44 h-10' : 'w-full h-10';
-  const selectClass = layout === 'row' ? 'w-36 h-10' : 'w-full h-10';
   const buttonClass = layout === 'row' ? 'w-10 h-10' : 'grow h-10';
 
   return (
@@ -59,36 +57,16 @@ const ScheduleRequestsFilter = ({
       className={`flex flex-wrap gap-3 mb-4 ${formLayout}`}
     >
       <Controller
-        name="doctor_id"
-        control={form.control}
-        render={({ field }) => (
-          <Field className={inputClass}>
-            <Input
-              {...field}
-              value={field.value?.toString() ?? ''}
-              onChange={(event) =>
-                field.onChange(
-                  event.target.value ? Number(event.target.value) : undefined,
-                )
-              }
-              placeholder="Doctor ID"
-              className={inputClass}
-            />
-          </Field>
-        )}
-      />
-
-      <Controller
         name="request_type"
         control={form.control}
         render={({ field }) => (
-          <Field className={selectClass}>
+          <Field className={inputClass}>
             <MultiSelect
               values={field.value ? [field.value.toString()] : []}
               onValuesChange={(values) => field.onChange(values[0])}
               single={true}
             >
-              <MultiSelectTrigger className={selectClass}>
+              <MultiSelectTrigger className={inputClass}>
                 <MultiSelectValue placeholder="Request Type" />
               </MultiSelectTrigger>
               <MultiSelectContent search={false}>
@@ -109,13 +87,13 @@ const ScheduleRequestsFilter = ({
         name="status"
         control={form.control}
         render={({ field }) => (
-          <Field className={selectClass}>
+          <Field className={inputClass}>
             <MultiSelect
               values={field.value ? [field.value.toString()] : []}
               onValuesChange={(values) => field.onChange(values[0])}
               single={true}
             >
-              <MultiSelectTrigger className={selectClass}>
+              <MultiSelectTrigger className={inputClass}>
                 <MultiSelectValue placeholder="Status" />
               </MultiSelectTrigger>
               <MultiSelectContent search={false}>
@@ -136,7 +114,7 @@ const ScheduleRequestsFilter = ({
         name="day_of_week"
         control={form.control}
         render={({ field }) => (
-          <Field className={selectClass}>
+          <Field className={inputClass}>
             <MultiSelect
               values={field.value !== undefined ? [field.value.toString()] : []}
               onValuesChange={(values) =>
@@ -146,17 +124,14 @@ const ScheduleRequestsFilter = ({
               }
               single={true}
             >
-              <MultiSelectTrigger className={selectClass}>
+              <MultiSelectTrigger className={inputClass}>
                 <MultiSelectValue placeholder="Day of Week" />
               </MultiSelectTrigger>
               <MultiSelectContent search={false}>
                 <MultiSelectGroup>
-                  {DAYS_OF_WEEK.map((day) => (
-                    <MultiSelectItem
-                      key={day.value}
-                      value={day.value.toString()}
-                    >
-                      {day.label}
+                  {DAYS.map((day, index) => (
+                    <MultiSelectItem key={index} value={index.toString()}>
+                      {day.en}
                     </MultiSelectItem>
                   ))}
                 </MultiSelectGroup>
@@ -171,11 +146,10 @@ const ScheduleRequestsFilter = ({
         control={form.control}
         render={({ field }) => (
           <Field className={inputClass}>
-            <Input
-              {...field}
-              value={field.value ?? ''}
-              type="date"
-              placeholder="From Date"
+            <DatePicker
+              value={field.value ?? undefined}
+              onChange={field.onChange}
+              placeholder="From"
               className={inputClass}
             />
           </Field>
@@ -187,11 +161,10 @@ const ScheduleRequestsFilter = ({
         control={form.control}
         render={({ field }) => (
           <Field className={inputClass}>
-            <Input
-              {...field}
-              value={field.value ?? ''}
-              type="date"
-              placeholder="To Date"
+            <DatePicker
+              value={field.value ?? undefined}
+              onChange={field.onChange}
+              placeholder="To"
               className={inputClass}
             />
           </Field>
@@ -202,7 +175,7 @@ const ScheduleRequestsFilter = ({
         <Button
           type="reset"
           variant="outline"
-          className={buttonClass + ' border-border'}
+          className={buttonClass}
           onClick={() => {
             form.reset();
             form.handleSubmit(onSubmit)();

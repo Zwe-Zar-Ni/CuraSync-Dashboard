@@ -1,21 +1,5 @@
 import type { Schedule } from '@/common/types/doctor';
-
-const DAYS = [
-  'Sunday',
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-];
-
-const formatTime = (time: string) => {
-  const [h, m] = time.split(':').map(Number);
-  const period = h >= 12 ? 'PM' : 'AM';
-  const hour = h % 12 || 12;
-  return `${hour}:${String(m).padStart(2, '0')} ${period}`;
-};
+import { getDayOfWeekLabel } from '@/common/utils/doctor';
 
 const SchedulesList = ({ schedules }: { schedules: Schedule[] }) => {
   if (schedules.length === 0) {
@@ -33,14 +17,14 @@ const SchedulesList = ({ schedules }: { schedules: Schedule[] }) => {
         >
           <div>
             <p className="text-sm font-medium">
-              {DAYS[slot.day_of_week] ?? `Day ${slot.day_of_week}`}
+              {getDayOfWeekLabel(slot.day_of_week, 'en')}
             </p>
             <p className="text-xs text-muted-foreground">
               {slot.slot_duration_minutes} min slots
             </p>
           </div>
           <span className="whitespace-nowrap text-sm text-muted-foreground">
-            {formatTime(slot.start_time)} – {formatTime(slot.end_time)}
+            {slot.start_time} – {slot.end_time}
           </span>
         </li>
       ))}
