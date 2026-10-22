@@ -4,7 +4,17 @@ export type ScheduleRequestType = 'CREATE' | 'UPDATE' | 'DELETE';
 
 export type ScheduleRequestStatus = 'PENDING' | 'APPROVED' | 'REJECTED';
 
-export type ScheduleRequestUser = {
+type DoctorScheduleRequest = {
+  id: number;
+  doctor_id: number;
+  day_of_week: number;
+  start_time: string;
+  end_time: string;
+  slot_duration_minutes: number;
+  is_active: boolean;
+};
+
+type ScheduleRequestUser = {
   id: number;
   name: string;
   email: string;
@@ -31,5 +41,5 @@ export type ScheduleRequest = {
   updated_at: string;
   doctor: DoctorResource;
   user: ScheduleRequestUser | null;
-  doctor_schedule: null;
+  doctor_schedule: null | DoctorScheduleRequest;
 };

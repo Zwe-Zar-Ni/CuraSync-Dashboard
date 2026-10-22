@@ -11,6 +11,8 @@ import type { ScheduleRequest, ScheduleRequestType } from '../types';
 import StatusBadge from './StatusBadge';
 import dayjs from 'dayjs';
 import { getDayOfWeekLabel } from '@/common/utils/doctor';
+import { Button } from '@/shared/components/ui/button';
+import { Edit } from 'lucide-react';
 
 type Props = {
   requests: ScheduleRequest[];
@@ -35,7 +37,8 @@ const ScheduleRequestsTable = ({ requests }: Props) => {
           <TableHead>Day</TableHead>
           <TableHead>Time</TableHead>
           <TableHead>Slot Duration</TableHead>
-          <TableHead>Created At</TableHead>
+          <TableHead>Requested At</TableHead>
+          <TableHead></TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -55,14 +58,33 @@ const ScheduleRequestsTable = ({ requests }: Props) => {
             <TableCell>{request.doctor.name}</TableCell>
             <TableCell>{request.doctor.phone_number}</TableCell>
             <TableCell className="capitalize">
-              {getDayOfWeekLabel(request.data.day_of_week)}
+              {request.request_type === 'DELETE' && request.doctor_schedule
+                ? getDayOfWeekLabel(request.doctor_schedule?.day_of_week)
+                : request.data
+                  ? getDayOfWeekLabel(request.data?.day_of_week)
+                  : '-'}
             </TableCell>
             <TableCell>
-              {request.data.start_time} - {request.data.end_time}
+              {request.request_type === 'DELETE' && request.doctor_schedule
+                ? `${request.doctor_schedule?.start_time} - ${request.doctor_schedule?.end_time}`
+                : request.data
+                  ? `${request.data?.start_time} - ${request.data?.end_time}`
+                  : '-'}
             </TableCell>
-            <TableCell>{request.data.slot_duration_minutes} min</TableCell>
+            <TableCell>
+              {request.request_type === 'DELETE' && request.doctor_schedule
+                ? '-'
+                : request.data
+                  ? `${request.data?.slot_duration_minutes} min`
+                  : '-'}
+            </TableCell>
             <TableCell>
               {dayjs(request.created_at).format('YYYY-MMM-DD')}
+            </TableCell>
+            <TableCell>
+              <Button variant="outline">
+                <Edit />
+              </Button>
             </TableCell>
           </TableRow>
         ))}
