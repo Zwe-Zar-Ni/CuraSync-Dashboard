@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "type-check": "tsc -b --noEmit",
     "format": "prettier --write . \"!**/*.{json,md}\"",
+    "type-check": "tsc -b --noEmit",
+    "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky"
   },
