@@ -25,6 +25,6 @@ export const SidebarNavigation: SidebarNavigationItem[] = [
     name: 'Schedule Requests',
     name_mm: 'Schedule Request များ',
     icon: Calendar,
-    link: '/dashboard/schedule-requests',
+    link: '/dashboard/schedule-requests?status=PENDING',
   },
 ];

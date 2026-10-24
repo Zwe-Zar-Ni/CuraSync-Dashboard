@@ -177,7 +177,7 @@ const ScheduleRequestsFilter = ({
           variant="outline"
           className={buttonClass}
           onClick={() => {
-            form.reset();
+            form.reset(setDefaultScheduleRequestsFilterValues());
             form.handleSubmit(onSubmit)();
           }}
         >
