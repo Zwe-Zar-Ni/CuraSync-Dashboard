@@ -36,6 +36,12 @@ const router = createBrowserRouter([
           () => import('@/domain/schedule-requests/pages/ScheduleRequestsPage'),
         ),
       },
+      {
+        path: 'doctor-schedules',
+        Component: lazy(
+          () => import('@/domain/doctor-schedules/pages/DoctorSchedulesPage'),
+        ),
+      },
     ],
   },
   {

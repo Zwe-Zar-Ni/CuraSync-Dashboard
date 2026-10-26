@@ -23,7 +23,7 @@ const AdminDashboard = () => {
 
   return (
     <SidebarProvider>
-      <div className="flex gap-4 bg-muted/50 w-screen min-h-screen overflow-hidden">
+      <div className="flex gap-4 bg-muted dark:bg-muted/50 w-screen min-h-screen overflow-hidden">
         <Sidebar />
         <SidebarInset className="flex-1 bg-transparent">
           <Navbar />

@@ -20,17 +20,17 @@ import { Field } from '@/shared/components/ui/field';
 import { DOCTOR_STATUSES } from '@/common/constants/doctor';
 import { useGetSpecializations } from '@/common/queries';
 
-type UsersFilterProps = {
+type DoctorsFilterProps = {
   values: DoctorsFilterInputType;
   onSearch: (values: DoctorsFilterInputType) => void;
   layout?: 'row' | 'col';
 };
 
-const UsersFilter = ({
+const DoctorsFilter = ({
   values,
   onSearch,
   layout = 'row',
-}: UsersFilterProps) => {
+}: DoctorsFilterProps) => {
   const resolver = zodResolver(
     DoctorsFilterValidator,
   ) as Resolver<DoctorsFilterInputType>;
@@ -171,4 +171,4 @@ const UsersFilter = ({
   );
 };
 
-export default UsersFilter;
+export default DoctorsFilter;
