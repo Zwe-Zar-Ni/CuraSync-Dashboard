@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { ScheduleRequestStatus } from '../types';
 import { Badge } from '@/shared/components/ui/badge';
 
@@ -8,8 +9,11 @@ const STATUS_COLORS: Record<ScheduleRequestStatus, string> = {
 };
 
 const StatusBadge = ({ status }: { status: ScheduleRequestStatus }) => {
+  const { t } = useTranslation();
   return (
-    <Badge className={`capitalize ${STATUS_COLORS[status]}`}>{status}</Badge>
+    <Badge className={`capitalize ${STATUS_COLORS[status]}`}>
+      {t(`scheduleRequests.statuses.${status}`)}
+    </Badge>
   );
 };
 

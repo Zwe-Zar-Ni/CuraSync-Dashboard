@@ -1,31 +1,31 @@
 export const DAYS = [
   {
     en: 'Sunday',
-    mm: 'Sunday',
+    mm: 'တနင်္ဂနွေ',
   },
   {
     en: 'Monday',
-    mm: 'Monday',
+    mm: 'တနင်္လာ',
   },
   {
     en: 'Tuesday',
-    mm: 'Tuesday',
+    mm: 'အင်္ဂါ',
   },
   {
     en: 'Wednesday',
-    mm: 'Wednesday',
+    mm: 'ဗုဒ္ဓဟူး',
   },
   {
     en: 'Thursday',
-    mm: 'Thursday',
+    mm: 'ကြာသပတေး',
   },
   {
     en: 'Friday',
-    mm: 'Friday',
+    mm: 'သောကြာ',
   },
   {
     en: 'Saturday',
-    mm: 'Saturday',
+    mm: 'စနေ',
   },
 ] as const;
 

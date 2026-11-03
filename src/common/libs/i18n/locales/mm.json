@@ -1,13 +1,75 @@
 {
-  "welcome": "မင်္ဂလာပါ",
+  "dashboard": {
+    "welcome": "မင်္ဂလာပါ"
+  },
   "auth": {
     "welcomeBack": "ပြန်လည်ကြိုဆိုပါသည်"
   },
   "labels": {
     "email": "အီးမေးလ်",
-    "password": "စကားဝှက်"
+    "password": "စကားဝှက်",
+    "name": "အမည်",
+    "status": "အခြေအနေ",
+    "phoneNumber": "ဖုန်းနံပါတ်",
+    "day": "နေ့",
+    "time": "အချိန်",
+    "doctor": "ဆရာဝန်",
+    "filters": "စစ်ထုတ်မှုများ",
+    "error": "Error",
+    "all": "အားလုံး"
   },
   "actions": {
-    "login": "Login"
+    "login": "Login",
+    "cancel": "ပယ်ဖျက်ရန်",
+    "save": "သိမ်းရန်",
+    "saving": "သိမ်းဆည်းနေသည်..."
+  },
+  "doctors": {
+    "title": "ဆရာဝန်များ",
+    "doctorId": "ဆရာဝန် ID",
+    "license": "လိုင်စင်",
+    "rating": "Rating",
+    "totalPatient": "စုစုပေါင်းလူနာ",
+    "fee": "ကုသခ",
+    "patientsTreated": "ကုသပေးခဲ့သော လူနာများ",
+    "consultationFee": "တိုင်ပင်ကုသခ",
+    "workingDays": "အလုပ်ရက်များ",
+    "dayCount_one": "{{count}} ရက်",
+    "dayCount_other": "{{count}} ရက်",
+    "specializations": "အထူးကုနယ်ပယ်များ",
+    "qualifications": "ပညာအရည်အချင်းများ",
+    "weeklySchedule": "အပတ်စဉ် အချိန်ဇယား",
+    "noSpecializations": "အထူးကုနယ်ပယ် မရှိပါ။",
+    "noQualifications": "ပညာအရည်အချင်း မရှိပါ။",
+    "noSchedule": "အချိန်ဇယား မရှိပါ။",
+    "minSlots_one": "{{count}} မိနစ် အချိန်ကွက်",
+    "minSlots_other": "{{count}} မိနစ် အချိန်ကွက်များ",
+    "statuses": {
+      "ACTIVE": "အသုံးပြုနေသည်",
+      "PENDING_VERIFICATION": "အတည်ပြုချက် စောင့်ဆိုင်းနေသည်",
+      "INACTIVE": "အသုံးမပြုတော့ပါ",
+      "SUSPENDED": "ရပ်ဆိုင်းထားသည်"
+    }
+  },
+  "scheduleRequests": {
+    "title": "အချိန်ဇယား တောင်းဆိုချက်များ",
+    "requestId": "တောင်းဆိုချက် ID",
+    "requestType": "တောင်းဆိုချက် အမျိုးအစား",
+    "slotDuration": "အချိန်ကွက် ကြာချိန်",
+    "requestedAt": "တောင်းဆိုချိန်",
+    "updateTitle": "တောင်းဆိုချက် #{{id}} ကို ပြင်ဆင်ရန်",
+    "adminNote": "စီမံခန့်ခွဲသူ မှတ်ချက်",
+    "minutes_one": "{{count}} မိနစ်",
+    "minutes_other": "{{count}} မိနစ်",
+    "requestTypes": {
+      "CREATE": "ဖန်တီးရန်",
+      "UPDATE": "ပြင်ဆင်ရန်",
+      "DELETE": "ဖျက်ရန်"
+    },
+    "statuses": {
+      "PENDING": "စောင့်ဆိုင်းနေသည်",
+      "APPROVED": "အတည်ပြုပြီး",
+      "REJECTED": "ငြင်းပယ်ပြီး"
+    }
   }
 }

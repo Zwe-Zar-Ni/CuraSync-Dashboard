@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { Qualification } from '@/common/types/doctor';
 import { Badge } from '@/shared/components/ui/badge';
 
@@ -6,9 +7,13 @@ const QualificationsList = ({
 }: {
   qualifications: Qualification[];
 }) => {
+  const { t } = useTranslation();
+
   if (qualifications.length === 0) {
     return (
-      <p className="text-sm text-muted-foreground">No qualifications listed.</p>
+      <p className="text-sm text-muted-foreground">
+        {t('doctors.noQualifications')}
+      </p>
     );
   }
 

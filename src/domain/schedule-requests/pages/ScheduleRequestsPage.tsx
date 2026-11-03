@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router';
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Filter } from 'lucide-react';
 import { Button } from '@/shared/components/ui/button';
 import {
@@ -17,6 +18,7 @@ import { extractFilters, readFilters, setFilters } from '../utils';
 import type { ScheduleRequestFilterInputType } from '../validations/filter';
 
 const ScheduleRequestsPage = () => {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const filters = useMemo(() => readFilters(searchParams), [searchParams]);
   const [filterOpen, setFilterOpen] = useState(false);
@@ -46,7 +48,7 @@ const ScheduleRequestsPage = () => {
       <div className="mb-4 md:flex justify-between items-center">
         <div>
           <h1 className="md:text-2xl font-semibold text-text-primary/80">
-            Schedule Requests
+            {t('scheduleRequests.title')}
           </h1>
         </div>
         <div className="flex justify-between mt-2 md:mt-0 gap-4">
@@ -67,7 +69,7 @@ const ScheduleRequestsPage = () => {
       <Sheet open={filterOpen} onOpenChange={setFilterOpen}>
         <SheetContent side="top">
           <SheetHeader>
-            <SheetTitle>Filters</SheetTitle>
+            <SheetTitle>{t('labels.filters')}</SheetTitle>
           </SheetHeader>
           <ScheduleRequestsFilter
             values={filters}
@@ -80,7 +82,7 @@ const ScheduleRequestsPage = () => {
       {isLoading ? (
         <ScheduleRequestsListLoading />
       ) : isError || !data ? (
-        <p>Error</p>
+        <p>{t('labels.error')}</p>
       ) : (
         <div>
           <ScheduleRequestsTable requests={data.data} />

@@ -9,6 +9,7 @@ import {
 } from '@/shared/components/ui/table';
 import { SlidersHorizontal } from 'lucide-react';
 import { useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
 import type { DoctorResource } from '@/common/types/doctor';
 import StatusBadge from './StatusBadge';
 
@@ -17,19 +18,20 @@ type Props = {
 };
 
 const DoctorsTable = ({ doctors }: Props) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   return (
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Doctor ID</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Name</TableHead>
-          <TableHead>Email</TableHead>
-          <TableHead>Phone Number</TableHead>
-          <TableHead>Fee</TableHead>
-          <TableHead>Rating</TableHead>
-          <TableHead>Total Patient</TableHead>
+          <TableHead>{t('doctors.doctorId')}</TableHead>
+          <TableHead>{t('labels.status')}</TableHead>
+          <TableHead>{t('labels.name')}</TableHead>
+          <TableHead>{t('labels.email')}</TableHead>
+          <TableHead>{t('labels.phoneNumber')}</TableHead>
+          <TableHead>{t('doctors.fee')}</TableHead>
+          <TableHead>{t('doctors.rating')}</TableHead>
+          <TableHead>{t('doctors.totalPatient')}</TableHead>
           <TableHead></TableHead>
         </TableRow>
       </TableHeader>

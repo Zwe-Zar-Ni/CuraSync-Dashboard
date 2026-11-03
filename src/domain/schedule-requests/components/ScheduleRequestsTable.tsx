@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Badge } from '@/shared/components/ui/badge';
 import {
   Table,
@@ -27,6 +28,8 @@ const REQUEST_TYPE_COLORS: Record<ScheduleRequestType, string> = {
 };
 
 const ScheduleRequestsTable = ({ requests }: Props) => {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language === 'mm' ? 'mm' : 'en';
   const [selectedRequest, setSelectedRequest] =
     useState<ScheduleRequest | null>(null);
 
@@ -35,15 +38,15 @@ const ScheduleRequestsTable = ({ requests }: Props) => {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Request ID</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Request Type</TableHead>
-            <TableHead>Doctor</TableHead>
-            <TableHead>Phone Number</TableHead>
-            <TableHead>Day</TableHead>
-            <TableHead>Time</TableHead>
-            <TableHead>Slot Duration</TableHead>
-            <TableHead>Requested At</TableHead>
+            <TableHead>{t('scheduleRequests.requestId')}</TableHead>
+            <TableHead>{t('labels.status')}</TableHead>
+            <TableHead>{t('scheduleRequests.requestType')}</TableHead>
+            <TableHead>{t('labels.doctor')}</TableHead>
+            <TableHead>{t('labels.phoneNumber')}</TableHead>
+            <TableHead>{t('labels.day')}</TableHead>
+            <TableHead>{t('labels.time')}</TableHead>
+            <TableHead>{t('scheduleRequests.slotDuration')}</TableHead>
+            <TableHead>{t('scheduleRequests.requestedAt')}</TableHead>
             <TableHead></TableHead>
           </TableRow>
         </TableHeader>
@@ -58,16 +61,19 @@ const ScheduleRequestsTable = ({ requests }: Props) => {
                 <Badge
                   className={`capitalize ${REQUEST_TYPE_COLORS[request.request_type]}`}
                 >
-                  {request.request_type}
+                  {t(`scheduleRequests.requestTypes.${request.request_type}`)}
                 </Badge>
               </TableCell>
               <TableCell>{request.doctor.name}</TableCell>
               <TableCell>{request.doctor.phone_number}</TableCell>
               <TableCell className="capitalize">
                 {request.request_type === 'DELETE' && request.doctor_schedule
-                  ? getDayOfWeekLabel(request.doctor_schedule?.day_of_week)
+                  ? getDayOfWeekLabel(
+                      request.doctor_schedule?.day_of_week,
+                      lang,
+                    )
                   : request.data
-                    ? getDayOfWeekLabel(request.data?.day_of_week)
+                    ? getDayOfWeekLabel(request.data?.day_of_week, lang)
                     : '-'}
               </TableCell>
               <TableCell>
@@ -81,7 +87,9 @@ const ScheduleRequestsTable = ({ requests }: Props) => {
                 {request.request_type === 'DELETE' && request.doctor_schedule
                   ? '-'
                   : request.data
-                    ? `${request.data?.slot_duration_minutes} min`
+                    ? t('scheduleRequests.minutes', {
+                        count: request.data?.slot_duration_minutes,
+                      })
                     : '-'}
               </TableCell>
               <TableCell>

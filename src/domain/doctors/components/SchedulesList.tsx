@@ -1,10 +1,14 @@
+import { useTranslation } from 'react-i18next';
 import type { Schedule } from '@/common/types/doctor';
 import { getDayOfWeekLabel } from '@/common/utils/doctor';
 
 const SchedulesList = ({ schedules }: { schedules: Schedule[] }) => {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language === 'mm' ? 'mm' : 'en';
+
   if (schedules.length === 0) {
     return (
-      <p className="text-sm text-muted-foreground">No schedule available.</p>
+      <p className="text-sm text-muted-foreground">{t('doctors.noSchedule')}</p>
     );
   }
 
@@ -17,10 +21,10 @@ const SchedulesList = ({ schedules }: { schedules: Schedule[] }) => {
         >
           <div>
             <p className="text-sm font-medium">
-              {getDayOfWeekLabel(slot.day_of_week, 'en')}
+              {getDayOfWeekLabel(slot.day_of_week, lang)}
             </p>
             <p className="text-xs text-muted-foreground">
-              {slot.slot_duration_minutes} min slots
+              {t('doctors.minSlots', { count: slot.slot_duration_minutes })}
             </p>
           </div>
           <span className="whitespace-nowrap text-sm text-muted-foreground">

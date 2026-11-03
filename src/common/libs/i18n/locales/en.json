@@ -1,13 +1,75 @@
 {
-  "welcome": "Welcome",
+  "dashboard": {
+    "welcome": "Welcome"
+  },
   "auth": {
     "welcomeBack": "Welcome Back!"
   },
   "labels": {
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "name": "Name",
+    "status": "Status",
+    "phoneNumber": "Phone Number",
+    "day": "Day",
+    "time": "Time",
+    "doctor": "Doctor",
+    "filters": "Filters",
+    "error": "Error",
+    "all": "All"
   },
   "actions": {
-    "login": "Login"
+    "login": "Login",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving..."
+  },
+  "doctors": {
+    "title": "Doctors",
+    "doctorId": "Doctor ID",
+    "license": "License",
+    "rating": "Rating",
+    "totalPatient": "Total Patient",
+    "fee": "Fee",
+    "patientsTreated": "Patients Treated",
+    "consultationFee": "Consultation Fee",
+    "workingDays": "Working Days",
+    "dayCount_one": "{{count}} day",
+    "dayCount_other": "{{count}} days",
+    "specializations": "Specializations",
+    "qualifications": "Qualifications",
+    "weeklySchedule": "Weekly Schedule",
+    "noSpecializations": "No specializations listed.",
+    "noQualifications": "No qualifications listed.",
+    "noSchedule": "No schedule available.",
+    "minSlots_one": "{{count}} min slot",
+    "minSlots_other": "{{count}} min slots",
+    "statuses": {
+      "ACTIVE": "Active",
+      "PENDING_VERIFICATION": "Pending Verification",
+      "INACTIVE": "Inactive",
+      "SUSPENDED": "Suspended"
+    }
+  },
+  "scheduleRequests": {
+    "title": "Schedule Requests",
+    "requestId": "Request ID",
+    "requestType": "Request Type",
+    "slotDuration": "Slot Duration",
+    "requestedAt": "Requested At",
+    "updateTitle": "Update Request #{{id}}",
+    "adminNote": "Admin Note",
+    "minutes_one": "{{count}} min",
+    "minutes_other": "{{count}} min",
+    "requestTypes": {
+      "CREATE": "Create",
+      "UPDATE": "Update",
+      "DELETE": "Delete"
+    },
+    "statuses": {
+      "PENDING": "Pending",
+      "APPROVED": "Approved",
+      "REJECTED": "Rejected"
+    }
   }
 }

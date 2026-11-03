@@ -13,10 +13,11 @@ React Compiler is enabled via Babel (`vite.config.ts`). Avoid `useMemo`-heavy ha
 - Typecheck: no dedicated script. Use `npx tsc --noEmit -p tsconfig.app.json` (faster than `pnpm build`, which runs `tsc -b && vite build`).
 - Tests: none configured. Do not invent a test runner.
 
-Order before finishing: lint → typecheck. Both fail on pre-existing issues outside your change — verify only that *your* files are clean (`pnpm lint 2>&1 | grep <path>`, or rely on typecheck output filtering):
+Order before finishing: lint → typecheck. Both fail on pre-existing issues outside your change — verify only that _your_ files are clean (`pnpm lint 2>&1 | grep <path>`, or rely on typecheck output filtering):
+
 - `pnpm build`/typecheck: type error in `src/shared/components/ui/multi-select.tsx` (Base UI `asChild` incompatibility).
 - `pnpm lint`: 4 errors in `src/shared/` (react-refresh export rules in `badge.tsx`/`button.tsx`/`sidebar.tsx`, react-hooks rule in `use-mobile.ts`).
-Don't "fix" these unless asked.
+  Don't "fix" these unless asked.
 
 ## Path aliases
 
@@ -38,6 +39,17 @@ Data flow per feature: `queries/index.ts` (TanStack Query hooks) → `services/i
 - shadcn components are Base UI (`@base-ui/react`), NOT Radix. Style: `base-vega`. They import `cn` from the `cn` npm package (`import { cn } from "cn"`), not a local util.
 - Icons: `lucide-react`.
 - Domain types use `.d.ts` files — import with `import type`.
+
+## Internationalization (i18n)
+
+- Locales: `src/common/libs/i18n/locales/en.json` and `mm.json`; init/config in `src/common/libs/i18n/index.ts`.
+- Components use `const { t } = useTranslation()` from `react-i18next`; use `i18n.language` when a label depends on the active locale (e.g. day names via `getDayOfWeekLabel`).
+- Key placement:
+  - `labels.*` — commonly reused labels (e.g. `email`, `status`, `phoneNumber`).
+  - `actions.*` — common action button labels (e.g. `cancel`, `save`, `saving`).
+  - `<domain>.*` — everything domain-specific, nested under the camelCase domain name (`auth`, `doctors`, `scheduleRequests`).
+- Do **not** translate input placeholders.
+- Add keys to both `en.json` and `mm.json`; use i18next plural suffixes (`_one`/`_other`) for count-based strings.
 
 ## TypeScript strictness gotchas
 

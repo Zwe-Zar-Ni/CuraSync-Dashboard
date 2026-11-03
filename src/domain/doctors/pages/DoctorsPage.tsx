@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router';
+import { useTranslation } from 'react-i18next';
 import DoctorsListLoading from '../components/DoctorsListLoading';
 import DoctorsTable from '../components/DoctorsTable';
 import { useGetDoctors } from '../queries';
@@ -17,6 +18,7 @@ import {
 import Pagination from '@/shared/components/pagination';
 
 const DoctorsPage = () => {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const filters = useMemo(() => readFilters(searchParams), [searchParams]);
   const [filterOpen, setFilterOpen] = useState(false);
@@ -46,7 +48,7 @@ const DoctorsPage = () => {
       <div className="mb-4 md:flex justify-between items-center">
         <div>
           <h1 className="md:text-2xl font-semibold text-text-primary/80">
-            Doctors
+            {t('doctors.title')}
           </h1>
         </div>
         <div className="flex justify-between mt-2 md:mt-0 gap-4">
@@ -67,7 +69,7 @@ const DoctorsPage = () => {
       <Sheet open={filterOpen} onOpenChange={setFilterOpen}>
         <SheetContent side="top">
           <SheetHeader>
-            <SheetTitle>Filters</SheetTitle>
+            <SheetTitle>{t('labels.filters')}</SheetTitle>
           </SheetHeader>
           <DoctorsFilter
             values={filters}
@@ -80,7 +82,7 @@ const DoctorsPage = () => {
       {isLoading ? (
         <DoctorsListLoading />
       ) : isError || !data ? (
-        <p>Error</p>
+        <p>{t('labels.error')}</p>
       ) : (
         <div>
           <DoctorsTable doctors={data.data} />

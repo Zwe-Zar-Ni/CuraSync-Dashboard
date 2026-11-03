@@ -1,7 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import type { DoctorStatus } from '@/common/types/doctor';
 import { Badge } from '@/shared/components/ui/badge';
 
 const StatusBadge = ({ status }: { status: DoctorStatus }) => {
+  const { t } = useTranslation();
   const color =
     status === 'ACTIVE'
       ? 'bg-green-500'
@@ -10,7 +12,7 @@ const StatusBadge = ({ status }: { status: DoctorStatus }) => {
         : 'bg-transparent';
   return (
     <Badge className={`capitalize ${color}`}>
-      {status.split('_').join(' ').toLowerCase()}
+      {t(`doctors.statuses.${status}`)}
     </Badge>
   );
 };

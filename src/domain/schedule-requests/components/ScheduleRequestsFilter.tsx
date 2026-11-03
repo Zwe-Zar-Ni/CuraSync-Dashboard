@@ -1,4 +1,5 @@
 import { RotateCcw, Search } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/shared/components/ui/button';
 import {
   MultiSelect,
@@ -21,7 +22,7 @@ import {
   SCHEDULE_REQUEST_TYPES,
 } from '../constants';
 import { DatePicker } from '@/shared/components/ui/date-picker';
-import { DAYS } from '@/common/utils/doctor';
+import { DAYS, getDayOfWeekLabel } from '@/common/utils/doctor';
 
 type ScheduleRequestsFilterProps = {
   values: ScheduleRequestFilterInputType;
@@ -34,6 +35,8 @@ const ScheduleRequestsFilter = ({
   onSearch,
   layout = 'row',
 }: ScheduleRequestsFilterProps) => {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language === 'mm' ? 'mm' : 'en';
   const resolver = zodResolver(
     ScheduleRequestsFilterValidator,
   ) as Resolver<ScheduleRequestFilterInputType>;
@@ -73,7 +76,7 @@ const ScheduleRequestsFilter = ({
                 <MultiSelectGroup>
                   {SCHEDULE_REQUEST_TYPES.map((type) => (
                     <MultiSelectItem key={type} value={type}>
-                      {type}
+                      {t(`scheduleRequests.requestTypes.${type}`)}
                     </MultiSelectItem>
                   ))}
                 </MultiSelectGroup>
@@ -100,7 +103,7 @@ const ScheduleRequestsFilter = ({
                 <MultiSelectGroup>
                   {SCHEDULE_REQUEST_STATUSES.map((status) => (
                     <MultiSelectItem key={status} value={status}>
-                      {status}
+                      {t(`scheduleRequests.statuses.${status}`)}
                     </MultiSelectItem>
                   ))}
                 </MultiSelectGroup>
@@ -129,9 +132,9 @@ const ScheduleRequestsFilter = ({
               </MultiSelectTrigger>
               <MultiSelectContent search={false}>
                 <MultiSelectGroup>
-                  {DAYS.map((day, index) => (
+                  {DAYS.map((_, index) => (
                     <MultiSelectItem key={index} value={index.toString()}>
-                      {day.en}
+                      {getDayOfWeekLabel(index, lang)}
                     </MultiSelectItem>
                   ))}
                 </MultiSelectGroup>

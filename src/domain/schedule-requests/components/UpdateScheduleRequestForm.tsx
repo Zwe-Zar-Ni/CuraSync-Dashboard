@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslation } from 'react-i18next';
 import { Controller, useForm, type Resolver } from 'react-hook-form';
 import { Button } from '@/shared/components/ui/button';
 import {
@@ -37,6 +38,7 @@ const REVIEW_STATUSES: UpdateScheduleRequestInputType['status'][] = [
 ];
 
 const UpdateScheduleRequestForm = ({ request, open, onOpenChange }: Props) => {
+  const { t } = useTranslation();
   const { mutate, isPending } = useUpdateScheduleRequest();
 
   const resolver = zodResolver(
@@ -77,7 +79,9 @@ const UpdateScheduleRequestForm = ({ request, open, onOpenChange }: Props) => {
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Update Request #{request.id}</DialogTitle>
+          <DialogTitle>
+            {t('scheduleRequests.updateTitle', { id: request.id })}
+          </DialogTitle>
         </DialogHeader>
 
         <form
@@ -89,7 +93,7 @@ const UpdateScheduleRequestForm = ({ request, open, onOpenChange }: Props) => {
             control={form.control}
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor="status">Status</FieldLabel>
+                <FieldLabel htmlFor="status">{t('labels.status')}</FieldLabel>
                 <MultiSelect
                   values={field.value ? [field.value] : []}
                   onValuesChange={(values) =>
@@ -104,7 +108,7 @@ const UpdateScheduleRequestForm = ({ request, open, onOpenChange }: Props) => {
                     <MultiSelectGroup>
                       {REVIEW_STATUSES.map((status) => (
                         <MultiSelectItem key={status} value={status}>
-                          {status}
+                          {t(`scheduleRequests.statuses.${status}`)}
                         </MultiSelectItem>
                       ))}
                     </MultiSelectGroup>
@@ -120,7 +124,9 @@ const UpdateScheduleRequestForm = ({ request, open, onOpenChange }: Props) => {
             control={form.control}
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor="admin_note">Admin Note</FieldLabel>
+                <FieldLabel htmlFor="admin_note">
+                  {t('scheduleRequests.adminNote')}
+                </FieldLabel>
                 <Textarea
                   id="admin_note"
                   placeholder="Enter admin note"
@@ -137,10 +143,10 @@ const UpdateScheduleRequestForm = ({ request, open, onOpenChange }: Props) => {
               variant="outline"
               onClick={() => handleOpenChange(false)}
             >
-              Cancel
+              {t('actions.cancel')}
             </Button>
             <Button type="submit" disabled={isPending}>
-              {isPending ? 'Saving...' : 'Save'}
+              {isPending ? t('actions.saving') : t('actions.save')}
             </Button>
           </DialogFooter>
         </form>

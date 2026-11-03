@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { Specialization } from '@/common/types/doctor';
 import { Stethoscope } from 'lucide-react';
 
@@ -6,10 +7,12 @@ const SpecializationsList = ({
 }: {
   specializations: Specialization[];
 }) => {
+  const { t } = useTranslation();
+
   if (specializations.length === 0) {
     return (
       <p className="text-sm text-muted-foreground">
-        No specializations listed.
+        {t('doctors.noSpecializations')}
       </p>
     );
   }

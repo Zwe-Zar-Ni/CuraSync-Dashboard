@@ -1,4 +1,5 @@
 import { RotateCcw, Search } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Input } from '@/shared/components/ui/input';
 import { Button } from '@/shared/components/ui/button';
 import {
@@ -31,6 +32,7 @@ const DoctorsFilter = ({
   onSearch,
   layout = 'row',
 }: DoctorsFilterProps) => {
+  const { t } = useTranslation();
   const resolver = zodResolver(
     DoctorsFilterValidator,
   ) as Resolver<DoctorsFilterInputType>;
@@ -110,7 +112,7 @@ const DoctorsFilter = ({
                 <MultiSelectGroup>
                   {DOCTOR_STATUSES.map((status) => (
                     <MultiSelectItem key={status} value={status}>
-                      {status}
+                      {t(`doctors.statuses.${status}`)}
                     </MultiSelectItem>
                   ))}
                 </MultiSelectGroup>
@@ -135,7 +137,9 @@ const DoctorsFilter = ({
               </MultiSelectTrigger>
               <MultiSelectContent search={true}>
                 <MultiSelectGroup>
-                  <MultiSelectItem value={'0'}>All</MultiSelectItem>
+                  <MultiSelectItem value={'0'}>
+                    {t('labels.all')}
+                  </MultiSelectItem>
                   {specializations?.map((specialization) => (
                     <MultiSelectItem
                       key={specialization.id}

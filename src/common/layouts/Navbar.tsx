@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import { SidebarTrigger } from '@/shared/components/ui/sidebar';
 import { ThemeToggle } from '@/shared/components/ui/theme-toggle';
 import { useGetUserProfile } from '../queries';
+import LanguageSwitch from '@/shared/components/language-switch';
 
 const Navbar = () => {
   const { data: user } = useGetUserProfile();
@@ -28,6 +29,7 @@ const Navbar = () => {
           </div>
         </Button>
         <ThemeToggle />
+        <LanguageSwitch />
       </div>
     </nav>
   );

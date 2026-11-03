@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import { useTranslation } from 'react-i18next';
 import { useGetDoctor } from '../queries';
 import { Badge } from '@/shared/components/ui/badge';
 import { Button } from '@/shared/components/ui/button';
@@ -62,6 +63,7 @@ const Stat = ({
 );
 
 const DoctorDetailsPage = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const { data: doctor, isLoading } = useGetDoctor(Number(id));
 
@@ -99,7 +101,7 @@ const DoctorDetailsPage = () => {
               </span>
               <span className="flex items-center gap-1.5">
                 <BadgeCheck className="size-3.5" />
-                License {doctor.license_number}
+                {t('doctors.license')} {doctor.license_number}
               </span>
             </div>
             {doctor.specilizations.length > 0 && (
@@ -129,23 +131,23 @@ const DoctorDetailsPage = () => {
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <Stat
           icon={<Star className="size-4" />}
-          label="Rating"
+          label={t('doctors.rating')}
           value={`${doctor.average_rating.toFixed(1)} (${doctor.rating_count})`}
         />
         <Stat
           icon={<Users className="size-4" />}
-          label="Patients Treated"
+          label={t('doctors.patientsTreated')}
           value={doctor.total_patient_count.toLocaleString()}
         />
         <Stat
           icon={<Banknote className="size-4" />}
-          label="Consultation Fee"
+          label={t('doctors.consultationFee')}
           value={doctor.standard_consultation_fee.toLocaleString()}
         />
         <Stat
           icon={<CalendarDays className="size-4" />}
-          label="Working Days"
-          value={`${doctor.schedules.length} day${doctor.schedules.length === 1 ? '' : 's'}`}
+          label={t('doctors.workingDays')}
+          value={t('doctors.dayCount', { count: doctor.schedules.length })}
         />
       </div>
 
@@ -153,14 +155,14 @@ const DoctorDetailsPage = () => {
         {/* Left column */}
         <div className="space-y-4">
           <Card
-            title="Specializations"
+            title={t('doctors.specializations')}
             icon={<Stethoscope className="size-4" />}
           >
             <SpecializationsList specializations={doctor.specilizations} />
           </Card>
 
           <Card
-            title="Qualifications"
+            title={t('doctors.qualifications')}
             icon={<GraduationCap className="size-4" />}
           >
             <QualificationsList qualifications={doctor.qualifications} />
@@ -169,7 +171,7 @@ const DoctorDetailsPage = () => {
 
         {/* Right column */}
         <Card
-          title="Weekly Schedule"
+          title={t('doctors.weeklySchedule')}
           icon={<Clock className="size-4" />}
           className="h-fit"
         >
