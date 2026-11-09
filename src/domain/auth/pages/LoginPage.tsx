@@ -18,7 +18,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from '@/shared/components/ui/input-group';
-import { setToken } from '@/common/utils/auth';
+import { setRefreshToken, setToken } from '@/common/utils/auth';
 
 const LoginPage = () => {
   const { t } = useTranslation();
@@ -34,7 +34,9 @@ const LoginPage = () => {
   const onSubmit: SubmitHandler<LoginSchema> = async (data) => {
     mutation.mutate(data, {
       onSuccess: (data) => {
-        setToken(data.token);
+        console.log(data);
+        setToken(data.access_token);
+        setRefreshToken(data.refresh_token);
         window.location.assign('/dashboard');
       },
       onError: (error) => {
@@ -124,7 +126,7 @@ const LoginPage = () => {
               form="login-form"
               disabled={mutation.isPending}
             >
-              {t('auth.submit')}
+              {t('actions.login')}
             </Button>
           </Field>
         </form>

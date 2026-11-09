@@ -31,6 +31,6 @@ export const SidebarNavigation: SidebarNavigationItem[] = [
     name: 'Doctor Schedules',
     name_mm: 'Doctor Schedule များ',
     icon: Calendar,
-    link: '/dashboard/doctor-schedules?day_of_week=0&is_active=true',
+    link: '/dashboard/doctor-schedules?day_of_week=0&is_active=1',
   },
 ];

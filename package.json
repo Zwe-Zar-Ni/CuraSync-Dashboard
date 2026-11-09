@@ -12,7 +12,8 @@
     "type-check": "tsc -b --noEmit",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "deploy": "pnpm run build && rsync -avz --delete dist/ ubuntu@118.27.147.156:/var/www/CuraSync-Admin/"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

@@ -7,10 +7,11 @@ export const useGetUserProfile = () =>
   useQuery({
     queryKey: ['user-me'],
     queryFn: () => commonSerivce.getUserProfile(),
+    staleTime: 1000 * 60 * 10, //? 10 minutes
   });
 
 export const useLogout = () =>
-  useMutation<string, ApiError, undefined>({
+  useMutation<string, ApiError>({
     mutationKey: ['logout'],
     mutationFn: commonSerivce.logout,
     onSuccess: () => {

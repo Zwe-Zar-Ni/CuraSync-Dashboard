@@ -19,6 +19,8 @@ export type ApiError = {
       string: string[];
     };
   };
+  status: number;
+  statusText: string;
 };
 
 export type UserProfile = {

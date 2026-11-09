@@ -1,24 +1,23 @@
-import { Outlet, useNavigate } from 'react-router';
+import { Navigate, Outlet } from 'react-router';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import { SidebarProvider, SidebarInset } from '@/shared/components/ui/sidebar';
 import useAuth from '../hooks/useAuth';
+import { getRefreshToken, getToken } from '../utils/auth';
 
 const AdminDashboard = () => {
   const { isLoading, isAuthenticated } = useAuth();
-  const navigate = useNavigate();
+  const hasSession = Boolean(getToken() || getRefreshToken());
 
   if (isLoading) {
     return (
       <div className="w-screen h-screen flex justify-center items-center">
-        <img src="/logo.png" alt="Logo" className="w-20" />
+        <img src="/icon.png" alt="Logo" className="w-20" />
       </div>
     );
   }
-  if (!isAuthenticated) {
-    navigate('/login', {
-      replace: true,
-    });
+  if (!isAuthenticated && !hasSession) {
+    return <Navigate to="/login" replace />;
   }
 
   return (

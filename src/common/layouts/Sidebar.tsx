@@ -1,6 +1,6 @@
 import { SidebarNavigation } from '../config/navigation';
 import { NavLink, useLocation } from 'react-router';
-import { removeToken } from '../utils/auth';
+import { removeRefreshToken, removeToken } from '../utils/auth';
 import { useLogout } from '../queries';
 
 import { Button } from '@/shared/components/ui/button';
@@ -24,8 +24,9 @@ const Sidebar = () => {
   const logout = useLogout();
 
   const handleLogout = () => {
-    logout.mutate(undefined);
+    logout.mutate();
     removeToken();
+    removeRefreshToken();
     window.location.assign('/');
   };
 
@@ -50,22 +51,27 @@ const Sidebar = () => {
                 >
                   <NavLink
                     to={item.link}
-                    className={`flex items-center w-full gap-2.5 p-3.5 border-r-2 ${pathname === item.link ? 'bg-secondary border-primary' : 'bg-transparent border-transparent'}`}
+                    className={`flex items-center w-full gap-2.5 p-3.5 border-r-2 ${pathname !== '/dashboard' && item.link.includes(pathname) ? 'bg-secondary border-primary' : 'bg-transparent border-transparent'}`}
                     onClick={() => setOpenMobile(false)}
                   >
                     <item.icon
                       size={24}
-                      color={pathname === item.link ? '#c70036' : '#848484'}
+                      color={
+                        pathname !== '/dashboard' &&
+                        item.link.includes(pathname)
+                          ? '#c70036'
+                          : '#848484'
+                      }
                       strokeWidth={2}
                     />
                     <p className="flex flex-col">
                       <span
-                        className={`${pathname === item.link ? 'text-primary' : 'text-text-primary/80'} text-sm`}
+                        className={`${pathname !== '/dashboard' && item.link.includes(pathname) ? 'text-primary' : 'text-text-primary/80'} text-sm`}
                       >
                         {item.name}
                       </span>
                       <span
-                        className={`${pathname === item.link ? 'text-primary' : 'text-text-secondary'} text-xs`}
+                        className={`${pathname !== '/dashboard' && item.link.includes(pathname) ? 'text-primary' : 'text-text-secondary'} text-xs`}
                       >
                         {item.name_mm}
                       </span>
